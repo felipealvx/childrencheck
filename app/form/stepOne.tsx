@@ -1,5 +1,7 @@
 import Input from "@/components/form/input";
-import { StyleSheet, Text, View } from "react-native";
+import { Colors } from "@/constants/Colors";
+import { Link } from "expo-router";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 export default function StepOne() {
   return (
@@ -41,7 +43,28 @@ export default function StepOne() {
       />
 
       <View>
-        
+        {/* <Link
+          href={"/male"}
+        >
+        </Link> */}
+        <Text style={styles.textLabel}>Sexo: </Text>
+        <View style={styles.buttons}>
+          <TouchableOpacity style={styles.button}>
+            <Text style={{color: Colors.surface, fontWeight: 'bold'}}>Masculino</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.button}>
+            <Text style={{color: Colors.surface, fontWeight: 'bold'}}>Feminino</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
+
+      <View>
+        <Text style={{textAlign: 'center', marginBottom: 5}}>
+          Avançar para o próximo passo.
+        </Text>
+        <TouchableOpacity style={styles.next}>
+          <Text style={{color: Colors.surface, fontWeight: 'bold'}}>Próximo</Text>
+        </TouchableOpacity>
       </View>
     </View>
   )
@@ -62,5 +85,29 @@ const styles = StyleSheet.create({
   input: {
     flex: 1,
     width: '100%',
+  },
+  textLabel: {
+    fontWeight: 'bold',
+  },
+  buttons: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    gap: 10,
+    marginTop: 10,
+  },
+  button: {
+    backgroundColor: Colors.primary,
+    flex: 1,
+    height: 50,
+    borderRadius: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  next: {
+    backgroundColor: Colors.primary,
+    height: 50,
+    borderRadius: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
   }
 })
