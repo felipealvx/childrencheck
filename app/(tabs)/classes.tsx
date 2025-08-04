@@ -6,8 +6,8 @@ export default function Classes() {
     <ScrollView style={style.container}>
       <Text>Oi</Text>
     </ScrollView>
-  )
-};
+  );
+}
 
 const style = StyleSheet.create({
   container: {
@@ -15,4 +15,4 @@ const style = StyleSheet.create({
     backgroundColor: Colors.background,
     paddingHorizontal: 20,
   },
-})
+});
