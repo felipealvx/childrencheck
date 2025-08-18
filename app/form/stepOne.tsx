@@ -1,20 +1,21 @@
 import Input from "@/components/form/input";
 import { Colors } from "@/constants/Colors";
-import { Link } from "expo-router";
+import { useNavigation } from "expo-router";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 export default function StepOne() {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
-      <Input 
+      <Input
         text="Nome:"
         placeText="Nome Completo..."
         value=""
         onChangeText={() => {}}
       />
-      
+
       <View style={styles.bodyInfos}>
-        <Input 
+        <Input
           text="Peso: (kg)"
           placeText="Peso em kg..."
           value=""
@@ -25,17 +26,17 @@ export default function StepOne() {
           text="Estatura: (cm)"
           placeText="Estatura em cm..."
           value=""
-          onChangeText={() => {}} 
+          onChangeText={() => {}}
           containerStyle={styles.input}
-          />
+        />
       </View>
-      <Input 
+      <Input
         text="Idade:"
         placeText="Idade..."
         value=""
         onChangeText={() => {}}
       />
-      <Input 
+      <Input
         text="Responsável:"
         placeText="Nome completo do responsável..."
         value=""
@@ -50,25 +51,37 @@ export default function StepOne() {
         <Text style={styles.textLabel}>Sexo: </Text>
         <View style={styles.buttons}>
           <TouchableOpacity style={styles.button}>
-            <Text style={{color: Colors.surface, fontWeight: 'bold'}}>Masculino</Text>
+            <Text style={{ color: Colors.surface, fontWeight: "bold" }}>
+              Masculino
+            </Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.button}>
-            <Text style={{color: Colors.surface, fontWeight: 'bold'}}>Feminino</Text>
+            <Text style={{ color: Colors.surface, fontWeight: "bold" }}>
+              Feminino
+            </Text>
           </TouchableOpacity>
         </View>
       </View>
 
       <View>
-        <Text style={{textAlign: 'center', marginBottom: 5}}>
+        <Text style={{ textAlign: "center", marginBottom: 5 }}>
           Avançar para o próximo passo.
         </Text>
-        <TouchableOpacity style={styles.next}>
-          <Text style={{color: Colors.surface, fontWeight: 'bold'}}>Próximo</Text>
+        <TouchableOpacity
+          style={styles.next}
+          onPress={() => {
+            //@ts-ignore
+            navigation.navigate("StepTwo")
+          }}
+        >
+          <Text style={{ color: Colors.surface, fontWeight: "bold" }}>
+            Próximo
+          </Text>
         </TouchableOpacity>
       </View>
     </View>
-  )
-};
+  );
+}
 
 const styles = StyleSheet.create({
   container: {
@@ -77,21 +90,21 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   bodyInfos: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    justifyContent: "space-between",
     gap: 10,
     // backgroundColor: 'blue'
   },
   input: {
     flex: 1,
-    width: '100%',
+    width: "100%",
   },
   textLabel: {
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   buttons: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    justifyContent: "space-between",
     gap: 10,
     marginTop: 10,
   },
@@ -100,14 +113,14 @@ const styles = StyleSheet.create({
     flex: 1,
     height: 50,
     borderRadius: 5,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   next: {
     backgroundColor: Colors.primary,
     height: 50,
     borderRadius: 5,
-    alignItems: 'center',
-    justifyContent: 'center',
-  }
-})
+    alignItems: "center",
+    justifyContent: "center",
+  },
+});

@@ -1,6 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import StepOne from './stepOne';
-import StepTwo from './stepOne'; 
+import StepTwo from './stepTwo'; 
 import { Colors } from '@/constants/Colors';
 // import { Stack } from 'expo-router';
 

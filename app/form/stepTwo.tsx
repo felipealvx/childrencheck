@@ -1,9 +1,11 @@
-import { Text } from "react-native";
+import { Text, View } from "react-native";
 
 export default function StepTwo() {
   return (
-    <Text>
-      StepTwo
-    </Text>
+    <View>
+      <Text>
+        StepTwo
+      </Text>
+    </View>
   )
 };
