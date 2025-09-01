@@ -8,7 +8,6 @@ export default function StepOne() {
       <Input
       icon="video"
       />
-      <Te
     </View>
   );
 }
