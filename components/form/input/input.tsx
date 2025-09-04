@@ -1,44 +1,29 @@
-import { Colors } from "@/constants/Colors";
-import {
-  StyleProp,
-  StyleSheet,
-  Text,
-  TextInput,
-  TextStyle,
-  View,
-  ViewStyle,
-} from "react-native";
-import { Controller } from "react-hook-form";
+import { Text, TextInput, TextInputProps, View } from "react-native";
+import { Controller, UseControllerProps } from "react-hook-form";
 import { Feather } from "@expo/vector-icons";
+import { styles } from "./styles";
+import { Colors } from "@/constants/Colors";
 
 type Props = {
   icon: keyof typeof Feather.glyphMap;
+  formProps: UseControllerProps;
+  inputProps: TextInputProps;
+  title: String;
 };
 
-export default function Input({ icon }: Props) {
+export default function Input({ icon, formProps, inputProps, title }: Props) {
   return (
     <Controller
       render={() => (
-        <View>
-          <Text></Text>
-          <TextInput />
-          <Feather name={icon} size={24} color="black" />
+        <View style={styles.container}>
+          <Text style={styles.title}>{title}</Text>
+          <View style={styles.inputContainer}>
+            <TextInput {...inputProps} />
+            <Feather name={icon} size={24} color={Colors.text} />
+          </View>
         </View>
       )}
+      {...formProps}
     />
   );
 }
-
-const styles = StyleSheet.create({
-  container: {},
-  label: {
-    fontWeight: "bold",
-  },
-  inputText: {
-    backgroundColor: "#e1e1e1",
-    borderRadius: 5,
-    marginTop: 5,
-    width: "100%",
-    height: 50,
-  },
-});
