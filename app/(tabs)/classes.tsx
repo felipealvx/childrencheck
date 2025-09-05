@@ -12,7 +12,6 @@ export default function Classes() {
 const style = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.background,
     paddingHorizontal: 20,
   },
 });

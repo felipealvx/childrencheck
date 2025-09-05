@@ -17,5 +17,8 @@ export const styles = StyleSheet.create({
     justifyContent: "space-between",
     paddingHorizontal: 8,
     backgroundColor: Colors.background
+  },
+  input: {
+    flex: 1
   }
 })
