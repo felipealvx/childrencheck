@@ -2,7 +2,7 @@ import { Text, TextInput, TextInputProps, View } from "react-native";
 import { Controller, UseControllerProps } from "react-hook-form";
 import { Feather, MaterialCommunityIcons, Ionicons } from "@expo/vector-icons";
 import { styles } from "./styles";
-import { Colors } from "@/constants/Colors";
+import { forwardRef } from "react";
 
 const iconLibraries = {
   Feather,
@@ -25,22 +25,27 @@ type Props = {
   icon: IconConfig;
 };
 
-export default function Input({
+const Input = forwardRef<TextInput, Props> (({
   formProps,
   inputProps,
   title,
   icon
-}: Props ) {
+}, ref ) => {
 
   const IconLib = icon ? iconLibraries[icon.iconLib] : null;
 
   return (
     <Controller
-      render={() => (
+      render={({ field }) => (
         <View style={styles.container}>
           <Text style={styles.title}>{title}</Text>
           <View style={styles.inputContainer}>
-            <TextInput {...inputProps} style={styles.input} />
+            <TextInput
+            value={field.value}
+            onChangeText={field.onChange}
+            ref={ref} 
+            {...inputProps} 
+            style={styles.input} />
 
             {IconLib && (
               <IconLib 
@@ -55,4 +60,6 @@ export default function Input({
       {...formProps}
     />
   );
-}
+});
+
+export { Input };
