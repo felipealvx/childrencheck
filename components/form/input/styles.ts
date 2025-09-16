@@ -3,7 +3,10 @@ import { Colors } from "@/constants/Colors";
 
 export const styles = StyleSheet.create({
   container: {
-    gap: 6
+    
+  },
+  group: {
+    
   },
   title: {
     fontSize: 16,
@@ -21,5 +24,10 @@ export const styles = StyleSheet.create({
   },
   input: {
     flex: 1
+  },
+  errorMessage: {
+    color: Colors.danger,
+    fontSize: 12,
+    marginTop: 4,
   }
 })

@@ -6,12 +6,13 @@ import { useRef } from "react";
 import { Button } from "@/components/form/Button";
 
 export default function StepOne() {
-  const { control, handleSubmit } = useForm();
+  const { control, handleSubmit, formState: { errors } } = useForm();
 
   function handleNextStep(data: any) {
     console.log(data);
   }
 
+  // ---------- refs para navegação entre inputs ----------
   const fullNameRef = useRef<TextInput>(null);
   const ageRef = useRef<TextInput>(null);
   const weightRef = useRef<TextInput>(null);
@@ -23,16 +24,12 @@ export default function StepOne() {
       <Input
         // -------------- nome completo -------------
         ref={fullNameRef}
-        icon={{
-          iconLib: "Feather",
-          name: "user",
-          size: 20,
-          color: "black",
-        }}
+        error={errors.fullName?.message}
         title={"Nome Completo"}
         formProps={{
           name: "fullName",
           control,
+          rules: { required: "O nome é obrigatório" },
         }}
         inputProps={{
           placeholder: "Nome Completo",
@@ -44,16 +41,12 @@ export default function StepOne() {
       <Input
         // -------------- data de nascimento -------------
         ref={ageRef}
-        icon={{
-          iconLib: "Feather",
-          name: "calendar",
-          size: 20,
-          color: "black",
-        }}
+        error={errors.age?.message}
         title={"Data de Nascimento"}
         formProps={{
           name: "age",
           control,
+          rules: { required: "A idade é obrigatória" },
         }}
         inputProps={{
           placeholder: "Data de Nascimento",
@@ -66,16 +59,12 @@ export default function StepOne() {
       <Input
         // -------------- peso -------------
         ref={weightRef}
-        icon={{
-          iconLib: "MaterialCommunityIcons",
-          name: "weight",
-          size: 20,
-          color: "black",
-        }}
+        error={errors.weight?.message}
         title={"Peso"}
         formProps={{
           name: "weight",
           control,
+          rules: { required: "O peso é obrigatório" },
         }}
         inputProps={{
           placeholder: "Peso em Kg",
@@ -88,16 +77,12 @@ export default function StepOne() {
       <Input
         // -------------- estatura -------------
         ref={heightRef}
-        icon={{
-          iconLib: "MaterialCommunityIcons",
-          name: "human-male-height",
-          size: 20,
-          color: "black",
-        }}
+        error={errors.height?.message}
         title={"Estatura"}
         formProps={{
           name: "height",
           control,
+          rules: { required: "A estatura é obrigatória" },
         }}
         inputProps={{
           placeholder: "Altura em metros",
@@ -110,16 +95,12 @@ export default function StepOne() {
       <Input
         // -------------- responsável -------------
         ref={parentRef}
-        icon={{
-          iconLib: "Feather",
-          name: "users",
-          size: 20,
-          color: "black",
-        }}
+        error={errors.parent?.message}
         title={"Responsável"}
         formProps={{
           name: "parent",
           control,
+          rules: { required: "O responsável é obrigatório" },
         }}
         inputProps={{
           placeholder: "Familiar responsável",
