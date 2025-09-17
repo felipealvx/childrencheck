@@ -13,11 +13,11 @@ export const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   inputContainer: {
-    height: 60,
     flexDirection: "row",
     alignItems: "center",
     borderWidth: 1,
-    borderRadius: 6,
+    borderColor: "#aaa",
+    borderRadius: 8,
     justifyContent: "space-between",
     paddingHorizontal: 8,
     backgroundColor: Colors.background

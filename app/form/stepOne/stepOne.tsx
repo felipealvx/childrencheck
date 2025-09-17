@@ -1,9 +1,5 @@
 import { Input } from "@/components/form/Input/input";
-import {
-  KeyboardAvoidingView,
-  Text,
-  TextInput,
-} from "react-native";
+import { KeyboardAvoidingView, Text, TextInput } from "react-native";
 import { styles } from "./styles";
 import { useForm } from "react-hook-form";
 import { useRef } from "react";
