@@ -4,8 +4,10 @@ import { styles } from "./styles";
 import { useForm } from "react-hook-form";
 import { useRef } from "react";
 import { Button } from "@/components/form/Button";
+import { useRouter } from "expo-router";
 
-export default function StepOne() {
+export function StepOne() {
+  const router = useRouter();
   const {
     control,
     handleSubmit,
@@ -13,7 +15,10 @@ export default function StepOne() {
   } = useForm();
 
   function handleNextStep(data: any) {
-    console.log(data);
+    router.push({
+      pathname: "/form/StepTwo/index", // caminho do próximo step
+      params: { formData: JSON.stringify(data) },
+    });
   }
 
   // ---------- refs para navegação entre inputs ----------

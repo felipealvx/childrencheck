@@ -1,6 +1,5 @@
-import { Input } from "@/components/form/Input/input";
 import { Text, TextInput, View } from "react-native";
-import { styles } from "./styles";
+import styles from "./styles";
 import { useForm } from "react-hook-form";
 import { useRef } from "react";
 import { Button } from "@/components/form/Button";
@@ -11,7 +10,7 @@ type FormData = {
   qual?: string;
 };
 
-export default function StepTwo() {
+export function StepTwo() {
   const {
     control,
     handleSubmit,
