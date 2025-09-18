@@ -1,15 +1,26 @@
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { StepOne } from "./StepOne";
-import { StepTwo } from "./StepTwo";
-// import { Stack } from 'expo-router';
+import { Stack } from 'expo-router';
 
-const Stack = createNativeStackNavigator();
-
-export default function FormNavigator() {
+export default function FormLayout() {
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="Informações" component={StepOne} />
-      <Stack.Screen name="Questionário" component={StepTwo} />
-    </Stack.Navigator>
+    <Stack
+      screenOptions={{
+        headerShown: true,
+        headerBackTitle: "Voltar",
+        headerTintColor: "#108ab1"
+      }}
+    >
+      <Stack.Screen
+        name="step-one"
+        options={{
+          title: "Informações Pessoais",
+        }}
+      />
+      <Stack.Screen
+        name="step-two"
+        options={{
+          title: "Questionário",
+        }}
+      />
+    </Stack>
   );
 }

@@ -1,12 +1,12 @@
 import { Input } from "@/components/form/Input/input";
 import { KeyboardAvoidingView, Text, TextInput } from "react-native";
-import { styles } from "./styles";
+import { styles } from "../../styles/stepOne";
 import { useForm } from "react-hook-form";
 import { useRef } from "react";
 import { Button } from "@/components/form/Button";
 import { useRouter } from "expo-router";
 
-export function StepOne() {
+export default function StepOne() {
   const router = useRouter();
   const {
     control,
@@ -16,7 +16,7 @@ export function StepOne() {
 
   function handleNextStep(data: any) {
     router.push({
-      pathname: "/form/StepTwo/index", // caminho do próximo step
+      pathname: "/form/step-two", // caminho do próximo step
       params: { formData: JSON.stringify(data) },
     });
   }
@@ -94,7 +94,7 @@ export function StepOne() {
           rules: { required: "A estatura é obrigatória" },
         }}
         inputProps={{
-          placeholder: "Altura em metros",
+          placeholder: "Altura em centimentros",
           returnKeyType: "next",
           keyboardType: "numeric",
           onSubmitEditing: () => parentRef.current?.focus(),

@@ -12,7 +12,7 @@ export default function Index() {
         <Link
           style={style.button}
           href={{
-            pathname: "../form",
+            pathname: "../form/step-one",
           }}> 
           <Text style={style.buttonText}>Iniciar Coleta</Text>
         </Link>

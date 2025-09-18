@@ -6,8 +6,8 @@ export const styles = StyleSheet.create({
     marginBottom: 8
   },
   radioGroup: { 
-    flexDirection: "row", 
-    marginBottom: 16 
+    flexDirection: "column", 
+    gap: 8
   },
   radioOption: { 
     flexDirection: "row", 

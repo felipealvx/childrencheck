@@ -1,20 +1,15 @@
 import React from "react";
-import {
-  View,
-  Text,
-  TextInput,
-  TouchableOpacity,
-} from "react-native";
+import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import { Controller, Control, FieldValues, Path } from "react-hook-form";
 import { styles } from "./styles";
 
 type Option = {
   label: string;
-  value: string;
+  value: number;
 };
 
 type ExtraInput<T extends FieldValues> = {
-  when: string; // valor que ativa o input extra
+  when: number; // valor que ativa o input extra
   name: Path<T>; // nome do campo extra
   placeholder?: string;
 };
@@ -32,7 +27,7 @@ export function RadioWithInput<T extends FieldValues>({
   name,
   options,
   extraInput,
-  title
+  title,
 }: Props<T>) {
   return (
     <Controller
@@ -82,4 +77,3 @@ export function RadioWithInput<T extends FieldValues>({
     />
   );
 }
-
