@@ -1,12 +1,15 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
+  container: {
+    marginBottom: 10,
+  },
   label: { 
     fontSize: 12, 
     marginBottom: 8
   },
   radioGroup: { 
-    flexDirection: "column", 
+    flexDirection: "column",
     gap: 8
   },
   radioOption: { 

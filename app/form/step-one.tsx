@@ -55,7 +55,14 @@ export default function StepOne() {
         formProps={{
           name: "age",
           control,
-          rules: { required: "A idade é obrigatória" },
+          rules: {
+            required: "A idade é obrigatória",
+            pattern: {
+              value:
+                /^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/,
+              message: "Formato inválido (DIA-MÊS-ANO)",
+            },
+          },
         }}
         inputProps={{
           placeholder: "Data de Nascimento",
@@ -73,7 +80,13 @@ export default function StepOne() {
         formProps={{
           name: "weight",
           control,
-          rules: { required: "O peso é obrigatório" },
+          rules: {
+            required: "O peso é obrigatório",
+            pattern: {
+              value: /^\d+(\.\d{1,3})?$/,
+              message: "Formato inválido",
+            },
+          },
         }}
         inputProps={{
           placeholder: "Peso em Kg",
@@ -91,7 +104,13 @@ export default function StepOne() {
         formProps={{
           name: "height",
           control,
-          rules: { required: "A estatura é obrigatória" },
+          rules: {
+            required: "A estatura é obrigatória",
+            pattern: {
+              value: /^\d{1,3}?$/,
+              message: "Formato inválido",
+            },
+          },
         }}
         inputProps={{
           placeholder: "Altura em centimentros",

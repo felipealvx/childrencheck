@@ -34,7 +34,7 @@ export function RadioWithInput<T extends FieldValues>({
       control={control}
       name={name}
       render={({ field: { onChange, value } }) => (
-        <View>
+        <View style={styles.container}>
           <Text style={styles.title}>{title}</Text>
           <Text style={styles.label}>Selecione uma opção:</Text>
 

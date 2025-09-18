@@ -1,21 +1,22 @@
-import { Alert, Text, View } from "react-native";
+import { Alert, ScrollView, Text } from "react-native";
 import styles from "../../styles/stepTwo";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/form/Button";
 import { RadioWithInput } from "@/components/form/Radio";
-import { useLocalSearchParams } from "expo-router";
+import { router, useLocalSearchParams } from "expo-router";
 
 type FormData = {
   pratica: 1 | 2;
-  diasPratica: 1 | 2 | 3 | 4;
   qual?: string;
+  diasPratica: 1 | 2 | 3 | 4;
+  competitivo: 1 | 2;
 };
 
 type StepOneData = {
   fullName: string;
   age: string;
-  weight: string;
-  height: string;
+  weight: number;
+  height: number;
   parent: string;
 };
 
@@ -30,12 +31,17 @@ export default function StepTwo() {
   const {
     control,
     handleSubmit,
-    formState: { errors },
   } = useForm<FormData>({
     defaultValues: { qual: "" },
   });
 
+  // ------------ funcao para passar de step -----------------
   function handleNextStep(data: FormData) {
+    router.push({
+      pathname: "/form/step-three", // caminho do próximo step
+      params: { formData: JSON.stringify(data) },
+    });
+
     const completeData = {
       ...stepOneData,
       ...data
@@ -43,20 +49,20 @@ export default function StepTwo() {
 
     console.log("Dados completos do formulário:", completeData);
 
-    Alert.alert(
-      "Formulário Concluído!", 
-      "Dados salvos com sucesso!",
-      [
-        {
-          // text: "OK",
-          // onPress: () => router.push("/(tabs)")  // Volta para o início
-        }
-      ]
-    );
+    // Alert.alert(
+    //   "Formulário Concluído!", 
+    //   "Dados salvos com sucesso!",
+    //   [
+    //     {
+    //       // text: "OK",
+    //       // onPress: () => router.push("/(tabs)")  // Volta para o início
+    //     }
+    //   ]
+    // );
   }
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Text>Responda as perguntas abaixo</Text>
       <RadioWithInput
         control={control}
@@ -89,11 +95,21 @@ export default function StepTwo() {
         ]}
       />
 
+      <RadioWithInput
+        control={control}
+        title="Você pratica este exercício físico ou esporte de maneira competitiva (participa de competições)?"
+        name="competitivo"
+        options={[
+          { label: "Sim", value: 1 },
+          { label: "Não", value: 2 },
+        ]}
+      />
+
       <Text style={styles.buttonSubtitle}>
         Avance para continuar a responder o formulário
       </Text>
 
       <Button title="Continuar" onPress={handleSubmit(handleNextStep)} />
-    </View>
+    </ScrollView>
   );
 }

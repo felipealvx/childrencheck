@@ -18,7 +18,19 @@ export default function FormLayout() {
       <Stack.Screen
         name="step-two"
         options={{
-          title: "Questionário",
+          title: "Questionário 1/",
+        }}
+      />
+      <Stack.Screen
+        name="step-three"
+        options={{
+          title: "Questionário 2/",
+        }}
+      />
+      <Stack.Screen
+        name="step-four"
+        options={{
+          title: "Questionário 3/",
         }}
       />
     </Stack>

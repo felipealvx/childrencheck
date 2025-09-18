@@ -8,7 +8,8 @@ export const styles = StyleSheet.create({
     backgroundColor: Colors.primary,
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 6
+    borderRadius: 6,
+    marginBottom: 60,
   },
   title: {
     fontWeight: "bold",
