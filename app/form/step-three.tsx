@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form";
 import { Button } from "@/components/form/Button";
 import { RadioWithInput } from "@/components/form/Radio";
 import { router, useLocalSearchParams } from "expo-router";
+import { useQuestForm } from "@/hooks/useQuestForm";
+import { QuestProps } from "@/contexts/QuestFormContext";
 
 type FormData = {
   horasTv: 1 | 2 | 3 | 4 | 5 | 6;
@@ -27,6 +29,8 @@ type StepTwoData = {
 
 export default function StepThree() {
 
+  const { updateFormData } = useQuestForm();
+
   const { formData } = useLocalSearchParams();
 
   const stepTwoData: StepTwoData = formData 
@@ -36,12 +40,11 @@ export default function StepThree() {
   const {
     control,
     handleSubmit,
-  } = useForm<FormData>({
-    defaultValues: { },
-  });
+  } = useForm<QuestProps>();
 
   // ------------ funcao para passar de step -----------------
-  function handleNextStep(data: FormData) {
+  function handleNextStep(data: QuestProps) {
+    updateFormData(data);
     router.push({
       pathname: "/form/step-four", // caminho do próximo step
       params: { formData: JSON.stringify(data) },

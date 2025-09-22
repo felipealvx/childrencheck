@@ -4,46 +4,51 @@ import { useForm } from "react-hook-form";
 import { Button } from "@/components/form/Button";
 import { RadioWithInput } from "@/components/form/Radio";
 import { router, useLocalSearchParams } from "expo-router";
+import { useQuestForm } from "@/hooks/useQuestForm";
+import { QuestProps } from "@/contexts/QuestFormContext";
 
-type FormData = {
-  pratica: 1 | 2;
-  qual?: string;
-  diasPratica: 1 | 2 | 3 | 4;
-  competitivo: 1 | 2;
-};
+// type FormData = {
+//   pratica: 1 | 2;
+//   qual?: string;
+//   diasPratica: 1 | 2 | 3 | 4;
+//   competitivo: 1 | 2;
+// };
 
-type StepOneData = {
-  fullName: string;
-  age: string;
-  weight: number;
-  height: number;
-  parent: string;
-};
+// type StepOneData = {
+//   fullName: string;
+//   age: string;
+//   weight: number;
+//   height: number;
+//   parent: string;
+// };
 
 export default function StepTwo() {
 
+  const { updateFormData, questFormData } = useQuestForm();
+
   const { formData } = useLocalSearchParams();
 
-  const stepOneData: StepOneData = formData 
-    ? JSON.parse(formData as string) 
-    : {};
+  // const stepOneData: StepOneData = formData 
+  //   ? JSON.parse(formData as string) 
+  //   : {};
 
   const {
     control,
     handleSubmit,
-  } = useForm<FormData>({
+  } = useForm<QuestProps>({
     defaultValues: { qual: "" },
   });
 
   // ------------ funcao para passar de step -----------------
-  function handleNextStep(data: FormData) {
+  function handleNextStep(data: QuestProps) {
+    updateFormData(data);
     router.push({
       pathname: "/form/step-three", // caminho do próximo step
       params: { formData: JSON.stringify(data) },
     });
 
     const completeData = {
-      ...stepOneData,
+      // ...stepOneData,
       ...data
     };
 

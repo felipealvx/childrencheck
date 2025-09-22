@@ -5,16 +5,21 @@ import { useForm } from "react-hook-form";
 import { useRef } from "react";
 import { Button } from "@/components/form/Button";
 import { useRouter } from "expo-router";
+import { QuestProps } from "@/contexts/QuestFormContext";
+import { useQuestForm } from "@/hooks/useQuestForm";
 
 export default function StepOne() {
+  const { updateFormData } = useQuestForm();
+
   const router = useRouter();
   const {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm<QuestProps>();
 
-  function handleNextStep(data: any) {
+  function handleNextStep(data: QuestProps) {
+    updateFormData(data);
     router.push({
       pathname: "/form/step-two", // caminho do próximo step
       params: { formData: JSON.stringify(data) },
