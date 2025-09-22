@@ -3,8 +3,8 @@ import { createContext, ReactNode, useState } from "react";
 export type QuestProps = {
   fullName: string;
   age: string;
-  weight: string;
-  height: string;
+  weight: number;
+  height: number;
   parent: string;
   pratica: 1 | 2;
   qual?: string;
@@ -15,6 +15,8 @@ export type QuestProps = {
   ler: 1 | 2 | 3;
   posicaoDormir: 1 | 2 | 3 | 4;
   horasDorme: 1 | 2 | 3 | 4 | 5;
+  sexo: 1 | 2;
+  sentarEscreverMesa: 1 | 2 | 3 | 4 | 5 | 6;
 };
 
 type QuestFormContextDataProps = {

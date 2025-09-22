@@ -1,7 +1,7 @@
 import { Input } from "@/components/form/Input/input";
 import { KeyboardAvoidingView, Text, TextInput } from "react-native";
 import { styles } from "../../styles/stepOne";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import { useRef } from "react";
 import { Button } from "@/components/form/Button";
 import { useRouter } from "expo-router";
@@ -12,6 +12,7 @@ export default function StepOne() {
   const { updateFormData } = useQuestForm();
 
   const router = useRouter();
+
   const {
     control,
     handleSubmit,
@@ -24,6 +25,11 @@ export default function StepOne() {
       pathname: "/form/step-two", // caminho do próximo step
     });
   }
+
+  const peso = useWatch({ control, name: "weight" });
+  const altura = useWatch({ control, name: "height" });
+
+  const imc = peso && altura ? (Number(peso) / (Number(altura) * Number(altura))).toFixed(2) : null;
 
   // ---------- refs para navegação entre inputs ----------
   const fullNameRef = useRef<TextInput>(null);
@@ -140,6 +146,12 @@ export default function StepOne() {
           onSubmitEditing: handleSubmit(handleNextStep),
         }}
       />
+
+      {
+        imc && (
+          <Text>IMC: {imc}</Text>
+        )
+      }
 
       <Text style={styles.buttonSubtitle}>
         Avance para continuar a responder o formulário

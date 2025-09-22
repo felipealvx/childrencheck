@@ -5,7 +5,7 @@ import { forwardRef } from "react";
 
 type Props = {
   error?: String;
-  formProps: UseControllerProps;
+  formProps: UseControllerProps<any>;
   inputProps: TextInputProps;
   title: String;
 };
