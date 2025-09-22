@@ -22,7 +22,6 @@ export default function StepOne() {
     updateFormData(data);
     router.push({
       pathname: "/form/step-two", // caminho do próximo step
-      params: { formData: JSON.stringify(data) },
     });
   }
 

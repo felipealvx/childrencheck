@@ -7,30 +7,9 @@ import { router, useLocalSearchParams } from "expo-router";
 import { useQuestForm } from "@/hooks/useQuestForm";
 import { QuestProps } from "@/contexts/QuestFormContext";
 
-// type FormData = {
-//   pratica: 1 | 2;
-//   qual?: string;
-//   diasPratica: 1 | 2 | 3 | 4;
-//   competitivo: 1 | 2;
-// };
-
-// type StepOneData = {
-//   fullName: string;
-//   age: string;
-//   weight: number;
-//   height: number;
-//   parent: string;
-// };
-
 export default function StepTwo() {
 
-  const { updateFormData, questFormData } = useQuestForm();
-
-  const { formData } = useLocalSearchParams();
-
-  // const stepOneData: StepOneData = formData 
-  //   ? JSON.parse(formData as string) 
-  //   : {};
+  const { updateFormData } = useQuestForm();
 
   const {
     control,
@@ -44,26 +23,7 @@ export default function StepTwo() {
     updateFormData(data);
     router.push({
       pathname: "/form/step-three", // caminho do próximo step
-      params: { formData: JSON.stringify(data) },
     });
-
-    const completeData = {
-      // ...stepOneData,
-      ...data
-    };
-
-    console.log("Dados completos do formulário:", completeData);
-
-    // Alert.alert(
-    //   "Formulário Concluído!", 
-    //   "Dados salvos com sucesso!",
-    //   [
-    //     {
-    //       // text: "OK",
-    //       // onPress: () => router.push("/(tabs)")  // Volta para o início
-    //     }
-    //   ]
-    // );
   }
 
   return (
@@ -83,10 +43,6 @@ export default function StepTwo() {
           placeholder: "Qual exercício?",
         }}
       />
-
-      {
-        
-      }
 
       <RadioWithInput
         control={control}

@@ -7,35 +7,9 @@ import { router, useLocalSearchParams } from "expo-router";
 import { useQuestForm } from "@/hooks/useQuestForm";
 import { QuestProps } from "@/contexts/QuestFormContext";
 
-type FormData = {
-  horasTv: 1 | 2 | 3 | 4 | 5 | 6;
-  horasPc: 1 | 2 | 3 | 4 | 5;
-  ler: 1 | 2 | 3;
-  posicaoDormir: 1 | 2 | 3 | 4;
-  horasDorme: 1 | 2 | 3 | 4 | 5;
-};
-
-type StepTwoData = {
-  fullName: string;
-  age: string;
-  weight: number;
-  height: number;
-  parent: string;
-  pratica: 1 | 2;
-  qual?: string;
-  diasPratica: 1 | 2 | 3 | 4;
-  competitivo: 1 | 2;
-};
-
 export default function StepThree() {
 
   const { updateFormData } = useQuestForm();
-
-  const { formData } = useLocalSearchParams();
-
-  const stepTwoData: StepTwoData = formData 
-    ? JSON.parse(formData as string) 
-    : {};
 
   const {
     control,
@@ -47,26 +21,7 @@ export default function StepThree() {
     updateFormData(data);
     router.push({
       pathname: "/form/step-four", // caminho do próximo step
-      params: { formData: JSON.stringify(data) },
     });
-
-    const completeData = {
-      ...stepTwoData,
-      ...data
-    };
-
-    console.log("Dados completos do formulário:", completeData);
-
-    // Alert.alert(
-    //   "Formulário Concluído!", 
-    //   "Dados salvos com sucesso!",
-    //   [
-    //     {
-    //       // text: "OK",
-    //       // onPress: () => router.push("/(tabs)")  // Volta para o início
-    //     }
-    //   ]
-    // );
   }
 
   return (
@@ -85,10 +40,6 @@ export default function StepThree() {
           { label: "Não sei responder", value: 6 },
         ]}
       />
-
-      {
-        
-      }
 
       <RadioWithInput
         control={control}

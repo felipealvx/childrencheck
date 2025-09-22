@@ -4,7 +4,6 @@ import { styles } from "./styles";
 import { forwardRef } from "react";
 
 type Props = {
-  // icon?: keyof typeof Feather.glyphMap;
   error?: String;
   formProps: UseControllerProps;
   inputProps: TextInputProps;
