@@ -8,7 +8,7 @@ import { useQuestForm } from "@/hooks/useQuestForm";
 import { QuestProps } from "@/contexts/QuestFormContext";
 import { SelectImage } from "@/components/form/SelectImage";
 
-export default function StepThree() {
+export default function StepFour() {
   const { updateFormData } = useQuestForm();
 
   const { control, handleSubmit } = useForm<QuestProps>();

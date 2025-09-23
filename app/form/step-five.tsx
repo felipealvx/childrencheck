@@ -1,13 +1,13 @@
 import { ScrollView, Text, View } from "react-native";
 import { styles } from "@/styles/steps";
-import { useForm, useWatch } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { Button } from "@/components/form/Button";
 import { router } from "expo-router";
 import { useQuestForm } from "@/hooks/useQuestForm";
 import { QuestProps } from "@/contexts/QuestFormContext";
 import { SelectImage } from "@/components/form/SelectImage";
 
-export default function StepThree() {
+export default function StepFive() {
   const { updateFormData, questFormData } = useQuestForm();
 
   const { control, handleSubmit } = useForm<QuestProps>();
@@ -16,7 +16,7 @@ export default function StepThree() {
   function handleNextStep(data: QuestProps) {
     updateFormData(data);
     router.push({
-      pathname: "/form/finish", // caminho do próximo step
+      pathname: "/form/step-six", // caminho do próximo step
     });
   }
 
