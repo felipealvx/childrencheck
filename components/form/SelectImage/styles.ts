@@ -12,6 +12,10 @@ export const styles = StyleSheet.create({
   title: {
     fontSize: 16,
     fontWeight: "bold",
+  },
+  subtitle: {
+    color: "#9794a0ff",
+    fontSize: 12,
     marginBottom: 10,
   },
   radioOption: { 
@@ -26,7 +30,7 @@ export const styles = StyleSheet.create({
     height: "100%",
     width: "100%",
     borderWidth: 1,
-    borderColor: "rgba(181, 177, 196, 1)"
+    borderColor: "#b5b1c4ff"
   },
   imageSelected: {
     borderWidth: 3,

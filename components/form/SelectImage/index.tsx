@@ -29,6 +29,7 @@ export function SelectImage<T extends FieldValues>({
       render={({ field: { onChange, value } }) => (
         <View style={styles.container}>
           <Text style={styles.title}>{title}</Text>
+          <Text style={styles.subtitle}>Arraste pro lado para ver as opções</Text>
 
           <ScrollView horizontal style={styles.radioGroup}>
             {options.map((option) => {

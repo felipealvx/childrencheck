@@ -17,6 +17,11 @@ export type QuestProps = {
   horasDorme: 1 | 2 | 3 | 4 | 5;
   sexo: 1 | 2;
   sentarEscreverMesa: 1 | 2 | 3 | 4 | 5 | 6;
+  sentarCadeiraConversar: 1 | 2 | 3 | 4 | 5 | 6;
+  sentarComputador: 1 | 2 | 3 | 4 | 5 | 6;
+  pegarObjeto: 1 | 2 | 3 | 4 | 5;
+  bolsas: 1 | 2 | 3 | 4 | 5 | 6;
+  levarMochila: 1 | 2 | 3 | 4 | 5 | 6;
 };
 
 type QuestFormContextDataProps = {

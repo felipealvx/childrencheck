@@ -1,9 +1,9 @@
-import { Alert, ScrollView, Text } from "react-native";
+import { ScrollView, Text } from "react-native";
 import styles from "../../styles/stepTwo";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/form/Button";
 import { RadioWithInput } from "@/components/form/Radio";
-import { router, useLocalSearchParams } from "expo-router";
+import { router } from "expo-router";
 import { useQuestForm } from "@/hooks/useQuestForm";
 import { QuestProps } from "@/contexts/QuestFormContext";
 

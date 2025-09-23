@@ -35,6 +35,18 @@ export default function FormLayout() {
             title: "Questionário 3/",
           }}
         />
+        <Stack.Screen
+          name="step-five"
+          options={{
+            title: "Questionário 3/",
+          }}
+        />
+        <Stack.Screen
+          name="finish"
+          options={{
+            title: "Finalizar questionário",
+          }}
+        />
       </Stack>
     </QuestProvider>
   );

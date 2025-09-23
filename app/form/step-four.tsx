@@ -1,5 +1,5 @@
 import { ScrollView, Text, View } from "react-native";
-import styles from "../../styles/stepTwo";
+import { styles } from "../../styles/steps";
 import { useForm, useWatch } from "react-hook-form";
 import { Button } from "@/components/form/Button";
 import { RadioWithInput } from "@/components/form/Radio";
@@ -27,14 +27,15 @@ export default function StepThree() {
     <ScrollView style={styles.container}>
       <RadioWithInput
         control={control}
-        title="Sexo"
+        title="Sexo:"
         name="sexo"
         options={[
           { label: "Masculino", value: 1 },
           { label: "Feminino", value: 2 },
         ]}
       />
-      {sexo == 1 && (
+      {sexo == 1 ? (
+        // --------------- masculino questionário -----------------
         <View>
           <SelectImage
             control={control}
@@ -60,6 +61,153 @@ export default function StepThree() {
               {
                 value: 5,
                 image: require("../../assets/formImages/backpeiImages/masculino/sentarEscreverMesa/0105.png"),
+              },
+              { value: 6, image: require("../../assets/formImages/outro.png") },
+            ]}
+          />
+
+          <SelectImage
+            control={control}
+            title="Como você costuma sentar em uma cadeira ou em um banco para conversar com os amigos?"
+            name="sentarCadeiraConversar"
+            options={[
+              {
+                value: 1,
+                image: require("../../assets/formImages/backpeiImages/masculino/sentarCadeiraConversar/0201.png"),
+              },
+              {
+                value: 2,
+                image: require("../../assets/formImages/backpeiImages/masculino/sentarCadeiraConversar/0202.png"),
+              },
+              {
+                value: 3,
+                image: require("../../assets/formImages/backpeiImages/masculino/sentarCadeiraConversar/0203.png"),
+              },
+              {
+                value: 4,
+                image: require("../../assets/formImages/backpeiImages/masculino/sentarCadeiraConversar/0204.png"),
+              },
+              {
+                value: 5,
+                image: require("../../assets/formImages/backpeiImages/masculino/sentarCadeiraConversar/0205.png"),
+              },
+              { value: 6, image: require("../../assets/formImages/outro.png") },
+            ]}
+          />
+
+          <SelectImage
+            control={control}
+            title="Como você costuma sentar para utilizar o computador?"
+            name="sentarComputador"
+            options={[
+              {
+                value: 1,
+                image: require("../../assets/formImages/backpeiImages/masculino/sentarComputador/0301.png"),
+              },
+              {
+                value: 2,
+                image: require("../../assets/formImages/backpeiImages/masculino/sentarComputador/0302.png"),
+              },
+              {
+                value: 3,
+                image: require("../../assets/formImages/backpeiImages/masculino/sentarComputador/0303.png"),
+              },
+              {
+                value: 4,
+                image: require("../../assets/formImages/backpeiImages/masculino/sentarComputador/0304.png"),
+              },
+              {
+                value: 5,
+                image: require("../../assets/formImages/backpeiImages/masculino/sentarComputador/0305.png"),
+              },
+              { value: 6, image: require("../../assets/formImages/outro.png") },
+            ]}
+          />
+        </View>
+      ) : (
+        <View>
+          <SelectImage
+            control={control}
+            title="Como você costuma sentar na escola para escrever à mesa?"
+            name="sentarEscreverMesa"
+            options={[
+              {
+                value: 1,
+                image: require("../../assets/formImages/backpeiImages/feminino/sentarEscreverMesa/01.png"),
+              },
+              {
+                value: 2,
+                image: require("../../assets/formImages/backpeiImages/feminino/sentarEscreverMesa/02.png"),
+              },
+              {
+                value: 3,
+                image: require("../../assets/formImages/backpeiImages/feminino/sentarEscreverMesa/03.png"),
+              },
+              {
+                value: 4,
+                image: require("../../assets/formImages/backpeiImages/feminino/sentarEscreverMesa/04.png"),
+              },
+              {
+                value: 5,
+                image: require("../../assets/formImages/backpeiImages/feminino/sentarEscreverMesa/05.png"),
+              },
+              { value: 6, image: require("../../assets/formImages/outro.png") },
+            ]}
+          />
+
+          <SelectImage
+            control={control}
+            title="Como você costuma sentar em uma cadeira ou em um banco para conversar com os amigos?"
+            name="sentarCadeiraConversar"
+            options={[
+              {
+                value: 1,
+                image: require("../../assets/formImages/backpeiImages/feminino/sentarCadeiraConversar/01.png"),
+              },
+              {
+                value: 2,
+                image: require("../../assets/formImages/backpeiImages/feminino/sentarCadeiraConversar/02.png"),
+              },
+              {
+                value: 3,
+                image: require("../../assets/formImages/backpeiImages/feminino/sentarCadeiraConversar/03.png"),
+              },
+              {
+                value: 4,
+                image: require("../../assets/formImages/backpeiImages/feminino/sentarCadeiraConversar/04.png"),
+              },
+              {
+                value: 5,
+                image: require("../../assets/formImages/backpeiImages/feminino/sentarCadeiraConversar/05.png"),
+              },
+              { value: 6, image: require("../../assets/formImages/outro.png") },
+            ]}
+          />
+
+          <SelectImage
+            control={control}
+            title="Como você costuma sentar para utilizar o computador?"
+            name="sentarComputador"
+            options={[
+              {
+                value: 1,
+                image: require("../../assets/formImages/backpeiImages/feminino/sentarComputador/01.png"),
+              },
+              {
+                value: 2,
+                image: require("../../assets/formImages/backpeiImages/feminino/sentarComputador/02.png"),
+              },
+              {
+                value: 3,
+                image: require("../../assets/formImages/backpeiImages/feminino/sentarComputador/03.png"),
+              },
+              {
+                value: 4,
+                image: require("../../assets/formImages/backpeiImages/feminino/sentarComputador/04.png"),
+              },
+              {
+                value: 5,
+                image: require("../../assets/formImages/backpeiImages/feminino/sentarComputador/05.png"),
               },
               { value: 6, image: require("../../assets/formImages/outro.png") },
             ]}
