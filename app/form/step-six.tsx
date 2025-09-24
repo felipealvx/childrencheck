@@ -22,42 +22,48 @@ export default function StepSix() {
 
   return (
     <ScrollView style={styles.container}>
-      <Text>Responda as perguntas abaixo</Text>
       <RadioWithInput
         control={control}
-        title="Você pratica algum exercicio físico ou esporte regularmente? (Na escola ou fora dela)?"
-        name="pratica"
+        title="Até que série sua mãe (ou sua responsável do sexo feminino) estudou?"
+        name="responsavelFemEstudo"
+        options={[
+          { label: "Não frequentou a escola", value: 1 },
+          { label: "Nivel fundamental (1ª a 8ª série)", value: 2 },
+          { label: "Nivel médio (1° ao 3° ano)", value: 3 },
+          { label: "Nivel superior (Faculdade)", value: 4 },
+          { label: "Não sei", value: 5 },
+          { label: "Não tenho responsável do sexo feminino", value: 6 },
+        ]}
+      />
+
+      <RadioWithInput
+        control={control}
+        title="Até que série seu pai (ou sua responsável do sexo masculino) estudou?"
+        name="responsavelMascEstudo"
+        options={[
+          { label: "Não frequentou a escola", value: 1 },
+          { label: "Nivel fundamental (1ª a 8ª série)", value: 2 },
+          { label: "Nivel médio (1° ao 3° ano)", value: 3 },
+          { label: "Nivel superior (Faculdade)", value: 4 },
+          { label: "Não sei", value: 5 },
+          { label: "Não tenho responsável do sexo masculino", value: 6 },
+        ]}
+      />
+
+      <RadioWithInput
+        control={control}
+        title="Algum de seus pais (ou responsáveis) apresentam dor nas costas?"
+        name="responsavelDores"
         options={[
           { label: "Sim", value: 1 },
           { label: "Não", value: 2 },
+          { label: "Não sei responder", value: 3 },
         ]}
         extraInput={{
           when: 1,
-          name: "qual",
-          placeholder: "Qual exercício?",
+          name: "qualResponsavelDores",
+          placeholder: "Qual o nome do responsável?",
         }}
-      />
-
-      <RadioWithInput
-        control={control}
-        title="Quantos dias você pratica este exercício/esporte por semana?"
-        name="diasPratica"
-        options={[
-          { label: "De 1 a 2 dias", value: 1 },
-          { label: "De 3 a 4 dias", value: 2 },
-          { label: "5 ou mais dias", value: 3 },
-          { label: "Não sei responder", value: 4 },
-        ]}
-      />
-
-      <RadioWithInput
-        control={control}
-        title="Você pratica este exercício físico ou esporte de maneira competitiva (participa de competições)?"
-        name="competitivo"
-        options={[
-          { label: "Sim", value: 1 },
-          { label: "Não", value: 2 },
-        ]}
       />
 
       <Text style={styles.buttonSubtitle}>

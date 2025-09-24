@@ -22,6 +22,14 @@ export type QuestProps = {
   pegarObjeto: 1 | 2 | 3 | 4 | 5;
   bolsas: 1 | 2 | 3 | 4 | 5 | 6;
   levarMochila: 1 | 2 | 3 | 4 | 5 | 6;
+  responsavelFemEstudo: 1 | 2 | 3 | 4 | 5 | 6; 
+  responsavelMascEstudo: 1 | 2 | 3 | 4 | 5 | 6; 
+  responsavelDores: 1 | 2 | 3;
+  qualResponsavelDores?: string;
+  sentiuDor: 1 | 2 | 3;
+  dorFrequente: 1 | 2 | 3 | 4 | 5 | 6; 
+  dorImpede: 1 | 2 | 3;
+  escalaDor: number;
 };
 
 type QuestFormContextDataProps = {

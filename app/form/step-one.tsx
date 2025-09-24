@@ -1,5 +1,5 @@
 import { Input } from "@/components/form/Input/input";
-import { KeyboardAvoidingView, Text, TextInput } from "react-native";
+import { KeyboardAvoidingView, ScrollView, Text, TextInput } from "react-native";
 import { styles } from "../../styles/stepOne";
 import { useForm, useWatch } from "react-hook-form";
 import { useRef } from "react";
@@ -39,7 +39,7 @@ export default function StepOne() {
   const parentRef = useRef<TextInput>(null);
 
   return (
-    <KeyboardAvoidingView style={styles.container}>
+    <ScrollView style={styles.container}>
       <Input
         // -------------- nome completo -------------
         ref={fullNameRef}
@@ -158,6 +158,6 @@ export default function StepOne() {
       </Text>
 
       <Button title="Continuar" onPress={handleSubmit(handleNextStep)} />
-    </KeyboardAvoidingView>
+    </ScrollView>
   );
 }
