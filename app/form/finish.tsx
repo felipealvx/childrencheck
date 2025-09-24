@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { Colors } from "@/constants/Colors";
 import { router } from "expo-router";
+import { exportStudentToCSV } from "@/utils/csvExport";
 
 export default function FinishScreen() {
   const { questFormData, getCompleteFormData, resetFormData } = useQuestForm();
@@ -36,33 +37,15 @@ export default function FinishScreen() {
               resetFormData(); // Limpa o formulário
               router.push("/(tabs)");
             }
+          },
+          {
+            text: "Fechar",
           }
         ]
       );
     } catch (error) {
       Alert.alert("Erro", "Não foi possível salvar na turma. Tente novamente.");
     }
-  };
-
-  const handleExportExcel = () => {
-    // Usa os dados completos com valores padrão
-    const completeData = getCompleteFormData();
-    
-    // Aqui você implementaria a exportação para Excel
-    Alert.alert(
-      "Dados Completos do Formulário", 
-      JSON.stringify(completeData, null, 2),
-      [
-        {
-          text: "Copiar Dados",
-          onPress: () => {
-            console.log("Dados completos:", completeData);
-            // Em um app real, você usaria o Clipboard
-          }
-        },
-        { text: "OK" }
-      ]
-    );
   };
 
   const handleNewForm = () => {
@@ -103,14 +86,6 @@ export default function FinishScreen() {
         >
           <Ionicons name="people" size={24} color={Colors.background} />
           <Text style={styles.actionButtonText}>Salvar em Turma</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity 
-          style={[styles.actionButton, styles.excelButton]}
-          onPress={handleExportExcel}
-        >
-          <Ionicons name="document-text" size={24} color={Colors.background} />
-          <Text style={styles.actionButtonText}>Exportar Excel</Text>
         </TouchableOpacity>
 
         <TouchableOpacity 

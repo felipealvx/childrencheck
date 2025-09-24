@@ -13,6 +13,7 @@ import {
 import { useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { styles } from "@/styles/classes/classes";
+import { exportClassToCSV } from "@/utils/csvExport";
 
 export default function Classes() {
   const { classes, addNewClass, deleteClass, removeStudentFromClass } = useClasses();
@@ -133,6 +134,12 @@ export default function Classes() {
                     onPress={() => handleDeleteClass(classItem.id, classItem.name)}
                   >
                     <Ionicons name="trash-outline" size={18} color={Colors.danger} />
+                  </TouchableOpacity>
+                  <TouchableOpacity 
+                    style={styles.deleteClassButton}
+                    onPress={() => exportClassToCSV(classItem)}
+                  >
+                    <Ionicons name="arrow-down-circle-outline" size={18} color={Colors.deepBlue} />
                   </TouchableOpacity>
                 </View>
               </TouchableOpacity>
