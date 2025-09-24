@@ -1,5 +1,5 @@
 import { ScrollView, Text, View } from "react-native";
-import { styles } from "@/styles/steps";
+import { styles } from "@/styles/form/steps";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/form/Button";
 import { router } from "expo-router";

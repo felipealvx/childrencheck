@@ -1,5 +1,5 @@
 import { ScrollView, Text } from "react-native";
-import { styles } from "../../styles/steps";
+import { styles } from "../../styles/form/steps";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/form/Button";
 import { RadioWithInput } from "@/components/form/Radio";
@@ -8,13 +8,9 @@ import { useQuestForm } from "@/hooks/useQuestForm";
 import { QuestProps } from "@/contexts/QuestFormContext";
 
 export default function StepThree() {
-
   const { updateFormData } = useQuestForm();
 
-  const {
-    control,
-    handleSubmit,
-  } = useForm<QuestProps>();
+  const { control, handleSubmit } = useForm<QuestProps>();
 
   // ------------ funcao para passar de step -----------------
   function handleNextStep(data: QuestProps) {

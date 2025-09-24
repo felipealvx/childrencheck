@@ -1,5 +1,5 @@
 import { Alert, ScrollView, Text, View } from "react-native";
-import { styles } from "@/styles/stepSeven";
+import { styles } from "@/styles/form/stepSeven";
 import { useForm, useWatch } from "react-hook-form";
 import { Button } from "@/components/form/Button";
 import { router } from "expo-router";
@@ -20,7 +20,7 @@ export default function StepSeven() {
       pathname: "/form/finish", // caminho do próximo step
     });
 
-    Alert.alert
+    Alert.alert;
   }
 
   const sentiuDor = useWatch({ control, name: "sentiuDor" });
@@ -64,7 +64,7 @@ export default function StepSeven() {
             ]}
           />
 
-          <SliderWithInput 
+          <SliderWithInput
             control={control}
             name="escalaDor"
             title="Arraste de 0 a 10 baseado na intensidade da dor nas costas nos últimos 3 meses."

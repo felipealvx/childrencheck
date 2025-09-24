@@ -1,17 +1,12 @@
 import { Colors } from "@/constants/Colors";
 import { ScrollView, StyleSheet, Text } from "react-native";
+import { styles } from "@/styles/classes/classes";
 
 export default function Classes() {
   return (
-    <ScrollView style={style.container}>
+    <ScrollView style={styles.container}>
       <Text>Oi</Text>
     </ScrollView>
   );
 }
 
-const style = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingHorizontal: 20,
-  },
-});
