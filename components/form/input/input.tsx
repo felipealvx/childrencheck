@@ -11,27 +11,23 @@ type Props = {
 };
 
 const Input = forwardRef<TextInput, Props>(
-  ({ formProps, inputProps, title, error = '' }, ref) => {
-
+  ({ formProps, inputProps, title, error = "" }, ref) => {
     return (
       <Controller
         render={({ field }) => (
           <View style={styles.container}>
             <View style={styles.group}>
               <Text style={styles.title}>{title}</Text>
-              <View style={styles.inputContainer}>
-                <TextInput
-                  value={field.value}
-                  onChangeText={field.onChange}
-                  ref={ref}
-                  {...inputProps}
-                  style={styles.input}
-                />
-              </View>
-              { 
-                error.length > 0 &&
+              <TextInput
+                value={field.value}
+                onChangeText={field.onChange}
+                ref={ref}
+                {...inputProps}
+                style={styles.input}
+              />
+              {error.length > 0 && (
                 <Text style={styles.errorMessage}>{error}</Text>
-              }
+              )}
             </View>
           </View>
         )}

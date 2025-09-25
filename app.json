@@ -3,7 +3,10 @@
     "name": "childrencheck",
     "slug": "childrencheck",
     "version": "1.0.0",
-    "platforms": ["ios", "android"],
+    "platforms": [
+      "ios",
+      "android"
+    ],
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
@@ -14,13 +17,14 @@
     },
     "android": {
       "permissions": [
-        "WRITE_EXTERNAL_STORAGE", 
+        "WRITE_EXTERNAL_STORAGE",
         "READ_EXTERNAL_STORAGE"
       ],
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#dde5ed"
-      }
+      },
+      "package": "com.felipealvx.childrencheck"
     },
     "web": {
       "bundler": "metro",
@@ -45,6 +49,14 @@
     "permissions": [
       "WRITE_EXTERNAL_STORAGE",
       "READ_EXTERNAL_STORAGE"
-    ]
+    ],
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "2e872d6f-2029-4970-8ff6-98aa7fbe0da1"
+      }
+    }
   }
 }

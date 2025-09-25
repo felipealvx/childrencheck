@@ -1,10 +1,11 @@
 import { Colors } from "@/constants/Colors";
 import { Link } from "expo-router";
-import { Text, View, StyleSheet, Image } from "react-native";
+import { Text, View, StyleSheet, Image, StatusBar } from "react-native";
 
 export default function Index() {
   return (
     <View style={style.container}>
+      <StatusBar backgroundColor={"#23202ca4"} barStyle={"default"}/>
       <Image
         style={style.image}
         source={require("../../assets/images/logo/identity.png")}

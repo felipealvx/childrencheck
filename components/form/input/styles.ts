@@ -12,18 +12,12 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "bold",
   },
-  inputContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    borderWidth: 1,
-    borderColor: "#aaa",
-    borderRadius: 8,
-    justifyContent: "space-between",
-    paddingHorizontal: 8,
-    backgroundColor: Colors.background
-  },
   input: {
-    flex: 1
+    borderWidth: 1,
+    borderColor: "#a1a3afff",
+    borderRadius: 8,
+    padding: 10,
+    marginTop: 5,
   },
   errorMessage: {
     color: Colors.danger,
