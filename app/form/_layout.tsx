@@ -20,37 +20,37 @@ export default function FormLayout() {
         <Stack.Screen
           name="step-two"
           options={{
-            title: "Questionário 1/",
+            title: "Questionário BackPEI 1/6",
           }}
         />
         <Stack.Screen
           name="step-three"
           options={{
-            title: "Questionário 2/",
+            title: "Questionário BackPEI 2/6",
           }}
         />
         <Stack.Screen
           name="step-four"
           options={{
-            title: "Questionário 3/",
+            title: "Questionário BackPEI 3/6",
           }}
         />
         <Stack.Screen
           name="step-five"
           options={{
-            title: "Questionário 3/",
+            title: "Questionário BackPEI 4/6",
           }}
         />
         <Stack.Screen
           name="step-six"
           options={{
-            title: "Questionário 3/",
+            title: "Questionário BackPEI 5/6",
           }}
         />
         <Stack.Screen
           name="step-seven"
           options={{
-            title: "Questionário 3/",
+            title: "Questionário BackPEI 6/6",
           }}
         />
         <Stack.Screen

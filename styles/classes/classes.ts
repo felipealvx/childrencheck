@@ -195,4 +195,10 @@ export const styles = StyleSheet.create({
     color: Colors.background,
     fontWeight: 'bold',
   },
+  loadingContainer: {
+
+  },
+  loadingText: {
+    
+  }
 });

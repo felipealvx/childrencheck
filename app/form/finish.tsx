@@ -64,9 +64,6 @@ export default function FinishScreen() {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.congratulations}>
-        <Text style={styles.congratulationsText}> 
-          PARABÉNS 👋
-        </Text>
         <Text style={styles.congratulationsUser}>
           {questFormData.fullName || 'ALUNO'}
         </Text>

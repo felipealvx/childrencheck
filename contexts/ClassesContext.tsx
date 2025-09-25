@@ -1,4 +1,5 @@
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useState, useEffect } from "react";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { QuestProps } from "./QuestFormContext";
 
 export type StudentData = QuestProps & {
@@ -20,6 +21,7 @@ type ClassesContextDataProps = {
   deleteClass: (classId: string) => void;
   removeStudentFromClass: (classId: string, studentId: string) => void;
   getClassById: (classId: string) => ClassData | undefined;
+  isLoading: boolean; // Novo estado para indicar carregamento
 };
 
 type ClassesContextProviderProps = {
@@ -30,12 +32,65 @@ const ClassesContext = createContext<ClassesContextDataProps>(
   {} as ClassesContextDataProps
 );
 
+const STORAGE_KEY = '@app_classes_data';
+
 function ClassesProvider({ children }: ClassesContextProviderProps) {
   const [classes, setClasses] = useState<ClassData[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Função para salvar dados no AsyncStorage
+  const saveClassesToStorage = async (classesToSave: ClassData[]) => {
+    try {
+      const jsonValue = JSON.stringify(classesToSave);
+      await AsyncStorage.setItem(STORAGE_KEY, jsonValue);
+    } catch (error) {
+      console.error('Erro ao salvar dados:', error);
+    }
+  };
+
+  // Função para carregar dados do AsyncStorage
+  const loadClassesFromStorage = async () => {
+    try {
+      setIsLoading(true);
+      const jsonValue = await AsyncStorage.getItem(STORAGE_KEY);
+      
+      if (jsonValue != null) {
+        const loadedClasses: ClassData[] = JSON.parse(jsonValue);
+        
+        // Converter strings de data de volta para objetos Date
+        const classesWithDates = loadedClasses.map(classItem => ({
+          ...classItem,
+          createdAt: new Date(classItem.createdAt),
+          students: classItem.students.map(student => ({
+            ...student,
+            createdAt: new Date(student.createdAt)
+          }))
+        }));
+        
+        setClasses(classesWithDates);
+      }
+    } catch (error) {
+      console.error('Erro ao carregar dados:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // Carregar dados quando o componente monta
+  useEffect(() => {
+    loadClassesFromStorage();
+  }, []);
+
+  // Salvar dados sempre que o estado classes mudar
+  useEffect(() => {
+    if (!isLoading && classes.length >= 0) {
+      saveClassesToStorage(classes);
+    }
+  }, [classes, isLoading]);
 
   function addNewClass(className: string) {
     const newClass: ClassData = {
-      id: Date.now().toString(), // ID simples baseado no timestamp
+      id: Date.now().toString(),
       name: className,
       createdAt: new Date(),
       students: [],
@@ -90,6 +145,7 @@ function ClassesProvider({ children }: ClassesContextProviderProps) {
         deleteClass,
         removeStudentFromClass,
         getClassById,
+        isLoading,
       }}
     >
       {children}

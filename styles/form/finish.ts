@@ -7,23 +7,8 @@ export const styles = StyleSheet.create({
     backgroundColor: '#f5f5f5',
   },
   congratulations: {
-    padding: 20,
-    borderRadius: 12,
+    padding: 10,
     alignItems: 'center',
-    marginBottom: 20,
-    backgroundColor: Colors.background,
-    borderWidth: 1,
-    borderColor: '#e0e0e0',
-    elevation: 2,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-  },
-  congratulationsText: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: Colors.secondary,
   },
   congratulationsUser: {
     fontSize: 28,
@@ -34,10 +19,9 @@ export const styles = StyleSheet.create({
   },
   subtitle: {
     fontSize: 16,
-    marginBottom: 24,
+    marginBottom: 10,
     textAlign: 'center',
     color: Colors.text,
-    lineHeight: 24,
   },
   actionsContainer: {
     marginBottom: 24,

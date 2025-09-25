@@ -8,7 +8,8 @@ import {
   Alert, 
   TextInput,
   Modal,
-  FlatList
+  FlatList,
+  ActivityIndicator
 } from "react-native";
 import { useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
@@ -16,7 +17,7 @@ import { styles } from "@/styles/classes/classes";
 import { exportClassToCSV } from "@/utils/csvExport";
 
 export default function Classes() {
-  const { classes, addNewClass, deleteClass, removeStudentFromClass } = useClasses();
+  const { classes, addNewClass, deleteClass, removeStudentFromClass, isLoading } = useClasses();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [newClassName, setNewClassName] = useState("");
   const [expandedClass, setExpandedClass] = useState<string | null>(null);
@@ -84,6 +85,16 @@ export default function Classes() {
       </TouchableOpacity>
     </View>
   );
+
+  // Mostrar loading enquanto carrega os dados
+  if (isLoading) {
+    return (
+      <View style={[styles.container, styles.loadingContainer]}>
+        <ActivityIndicator size="large" color={Colors.primary} />
+        <Text style={styles.loadingText}>Carregando turmas...</Text>
+      </View>
+    );
+  }
 
   return (
     <View style={styles.container}>

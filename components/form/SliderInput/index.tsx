@@ -34,7 +34,7 @@ export function SliderWithInput<T extends FieldValues>({
             {value ?? min}
           </Text>
           <View style={styles.slider}>
-            <Ionicons name="sad-outline" size={24} color={Colors.danger} />
+            <Ionicons name="happy-outline" size={24} color={Colors.secondary} />
             <Slider
               style={styles.input}
               minimumValue={min}
@@ -46,7 +46,7 @@ export function SliderWithInput<T extends FieldValues>({
               thumbTintColor={Colors.secondary}
               onValueChange={onChange}
             />
-            <Ionicons name="happy-outline" size={24} color={Colors.secondary} />
+            <Ionicons name="sad-outline" size={24} color={Colors.danger} />
           </View>
         </View>
       )}

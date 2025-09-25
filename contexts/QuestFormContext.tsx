@@ -1,4 +1,5 @@
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useState, useEffect } from "react";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export type QuestProps = {
   fullName: string;
@@ -35,8 +36,9 @@ export type QuestProps = {
 type QuestFormContextDataProps = {
   questFormData: QuestProps;
   updateFormData: (value: QuestProps) => void;
-  getCompleteFormData: () => QuestProps; // Nova função para dados completos
-  resetFormData: () => void; // Nova função para resetar
+  getCompleteFormData: () => QuestProps;
+  resetFormData: () => void;
+  isLoading: boolean;
 };
 
 type QuestFormContextProviderProps = {
@@ -46,6 +48,8 @@ type QuestFormContextProviderProps = {
 const QuestFormContext = createContext<QuestFormContextDataProps>(
   {} as QuestFormContextDataProps
 );
+
+const FORM_STORAGE_KEY = '@app_current_form';
 
 // Valores padrão para todas as perguntas
 const defaultQuestData: QuestProps = {
@@ -57,7 +61,7 @@ const defaultQuestData: QuestProps = {
   parent: "",
 
   // Questionários com valores padrão 0
-  pratica: 0 as any, // 0 = não respondido
+  pratica: 0 as any,
   qual: "",
   diasPratica: 0 as any,
   competitivo: 0 as any,
@@ -87,20 +91,64 @@ function QuestProvider({ children }: QuestFormContextProviderProps) {
   const [questFormData, setQuestFormData] = useState<QuestProps>({
     ...defaultQuestData,
   });
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Função para salvar formulário atual no AsyncStorage
+  const saveFormToStorage = async (formData: QuestProps) => {
+    try {
+      // Só salva se houver dados significativos preenchidos
+      if (formData.fullName || formData.age || formData.weight || formData.height) {
+        const jsonValue = JSON.stringify(formData);
+        await AsyncStorage.setItem(FORM_STORAGE_KEY, jsonValue);
+      }
+    } catch (error) {
+      console.error('Erro ao salvar formulário:', error);
+    }
+  };
+
+  // Função para carregar formulário do AsyncStorage
+  const loadFormFromStorage = async () => {
+    try {
+      setIsLoading(true);
+      const jsonValue = await AsyncStorage.getItem(FORM_STORAGE_KEY);
+      
+      if (jsonValue != null) {
+        const loadedForm: QuestProps = JSON.parse(jsonValue);
+        setQuestFormData(loadedForm);
+      }
+    } catch (error) {
+      console.error('Erro ao carregar formulário:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // Carregar dados quando o componente monta
+  useEffect(() => {
+    loadFormFromStorage();
+  }, []);
+
+  // Salvar dados sempre que o formulário mudar (debounce seria ideal aqui)
+  useEffect(() => {
+    if (!isLoading) {
+      const timeoutId = setTimeout(() => {
+        saveFormToStorage(questFormData);
+      }, 1000); // Salva após 1 segundo de inatividade
+
+      return () => clearTimeout(timeoutId);
+    }
+  }, [questFormData, isLoading]);
 
   function updateFormData(data: QuestProps) {
     setQuestFormData((prevState) => ({ ...prevState, ...data }));
   }
 
-  // Nova função que retorna dados completos com valores padrão para campos não respondidos
   function getCompleteFormData(): QuestProps {
     const completeData = { ...defaultQuestData };
 
-    // Sobrescreve apenas os campos que foram preenchidos
     Object.keys(questFormData).forEach((key) => {
       const value = questFormData[key as keyof QuestProps];
 
-      // Se o valor foi preenchido (não é undefined, null ou string vazia)
       if (value !== undefined && value !== null && value !== "") {
         (completeData as any)[key] = value;
       }
@@ -109,9 +157,15 @@ function QuestProvider({ children }: QuestFormContextProviderProps) {
     return completeData;
   }
 
-  // Nova função para resetar o formulário
-  function resetFormData() {
+  async function resetFormData() {
     setQuestFormData({ ...defaultQuestData });
+    
+    // Remove o formulário salvo do storage quando resetar
+    try {
+      await AsyncStorage.removeItem(FORM_STORAGE_KEY);
+    } catch (error) {
+      console.error('Erro ao limpar formulário do storage:', error);
+    }
   }
 
   return (
@@ -121,6 +175,7 @@ function QuestProvider({ children }: QuestFormContextProviderProps) {
         updateFormData,
         getCompleteFormData,
         resetFormData,
+        isLoading,
       }}
     >
       {children}
