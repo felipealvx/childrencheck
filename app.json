@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "childrencheck",
+    "name": "Children Check",
     "slug": "childrencheck",
     "version": "1.0.0",
     "platforms": [
@@ -22,7 +22,7 @@
       ],
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#dde5ed"
+        "backgroundColor": "#108AB1"
       },
       "package": "com.felipealvx.childrencheck"
     },
