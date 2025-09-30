@@ -62,7 +62,7 @@ export default function StepSix() {
         extraInput={{
           when: 1,
           name: "qualResponsavelDores",
-          placeholder: "Qual o nome do responsável?",
+          placeholder: "Qual responsável sentiu dor nas costas?",
         }}
       />
 

@@ -6,169 +6,169 @@ import { StudentData, ClassData } from '@/contexts/ClassesContext';
 // Mapeamento dos valores numéricos para textos descritivos
 const valueMapping = {
   // Sexo
-  sexo: { 0: "Não respondido", 1: "Masculino", 2: "Feminino" },
+  sexo: { 0: "0", 1: "1", 2: "2" },
   
   // Prática de exercício
-  pratica: { 0: "Não respondido", 1: "Sim", 2: "Não" },
+  pratica: { 0: "0", 1: "1", 2: "2" },
   
   // Dias de prática
   diasPratica: { 
-    0: "Não respondido", 
-    1: "1-2 dias", 
-    2: "3-4 dias", 
-    3: "5+ dias", 
-    4: "Não sei responder" 
+    0: "0", 
+    1: "1", 
+    2: "2", 
+    3: "3", 
+    4: "4" 
   },
   
   // Competitivo
-  competitivo: { 0: "Não respondido", 1: "Sim", 2: "Não" },
+  competitivo: { 0: "0", 1: "1", 2: "2" },
   
   // Horas TV
   horasTv: { 
-    0: "Não respondido", 
-    1: "0-1 hora", 
-    2: "2-3 horas", 
-    3: "4-5 horas", 
-    4: "6-7 horas", 
-    5: "8+ horas", 
-    6: "Não sei responder" 
+    0: "0", 
+    1: "1", 
+    2: "2", 
+    3: "3", 
+    4: "4", 
+    5: "5", 
+    6: "6" 
   },
   
   // Horas PC
   horasPc: { 
-    0: "Não respondido", 
-    1: "0-1 hora", 
-    2: "2-3 horas", 
-    3: "4-5 horas", 
-    4: "6+ horas", 
-    5: "Não sei responder" 
+    0: "0", 
+    1: "1", 
+    2: "2", 
+    3: "3", 
+    4: "4", 
+    5: "5" 
   },
   
   // Ler na cama
-  ler: { 0: "Não respondido", 1: "Sim", 2: "Não", 3: "Às vezes" },
+  ler: { 0: "0", 1: "1", 2: "2", 3: "3" },
   
   // Posição para dormir
   posicaoDormir: { 
-    0: "Não respondido", 
-    1: "De lado", 
-    2: "De bruços", 
-    3: "De costas", 
-    4: "Não sei responder" 
+    0: "0", 
+    1: "1", 
+    2: "2", 
+    3: "3", 
+    4: "4" 
   },
   
   // Horas de sono
   horasDorme: { 
-    0: "Não respondido", 
-    1: "0-6 horas", 
-    2: "7 horas", 
-    3: "8-9 horas", 
-    4: "10+ horas", 
-    5: "Não sei responder" 
+    0: "0", 
+    1: "1", 
+    2: "2", 
+    3: "3", 
+    4: "4", 
+    5: "5" 
   },
   
   // Posturas (1-6 representam diferentes posições)
   sentarEscreverMesa: { 
-    0: "Não respondido", 
-    1: "Posição 1", 
-    2: "Posição 2", 
-    3: "Posição 3", 
-    4: "Posição 4", 
-    5: "Posição 5", 
-    6: "Outro" 
+    0: "0", 
+    1: "1", 
+    2: "2", 
+    3: "3", 
+    4: "4", 
+    5: "5", 
+    6: "6" 
   },
   
   sentarCadeiraConversar: { 
-    0: "Não respondido", 
-    1: "Posição 1", 
-    2: "Posição 2", 
-    3: "Posição 3", 
-    4: "Posição 4", 
-    5: "Posição 5", 
-    6: "Outro" 
+    0: "0", 
+    1: "1", 
+    2: "2", 
+    3: "3", 
+    4: "4", 
+    5: "5", 
+    6: "6" 
   },
   
   sentarComputador: { 
-    0: "Não respondido", 
-    1: "Posição 1", 
-    2: "Posição 2", 
-    3: "Posição 3", 
-    4: "Posição 4", 
-    5: "Posição 5", 
-    6: "Outro" 
+    0: "0", 
+    1: "1", 
+    2: "2", 
+    3: "3", 
+    4: "4", 
+    5: "5", 
+    6: "6" 
   },
   
   // Pegar objeto do chão
   pegarObjeto: { 
-    0: "Não respondido", 
-    1: "Posição 1", 
-    2: "Posição 2", 
-    3: "Posição 3", 
-    4: "Posição 4", 
-    5: "Outro" 
+    0: "0", 
+    1: "1", 
+    2: "2", 
+    3: "3", 
+    4: "4", 
+    5: "5" 
   },
   
   // Tipo de bolsa
   bolsas: { 
-    0: "Não respondido", 
-    1: "Mochila 1", 
-    2: "Mochila 2", 
-    3: "Mochila 3", 
-    4: "Mochila 4", 
-    5: "Mochila 5", 
-    6: "Outro" 
+    0: "0", 
+    1: "1", 
+    2: "2", 
+    3: "3", 
+    4: "4", 
+    5: "5", 
+    6: "6" 
   },
   
   // Como levar mochila
   levarMochila: { 
-    0: "Não respondido", 
-    1: "Posição 1", 
-    2: "Posição 2", 
-    3: "Posição 3", 
-    4: "Posição 4", 
-    5: "Posição 4", 
-    6: "Outro" 
+    0: "0", 
+    1: "1", 
+    2: "2", 
+    3: "3", 
+    4: "4", 
+    5: "5", 
+    6: "6" 
   },
   
   // Escolaridade responsáveis
   responsavelFemEstudo: { 
-    0: "Não respondido", 
-    1: "Não frequentou", 
-    2: "Fundamental", 
-    3: "Médio", 
-    4: "Superior", 
-    5: "Não sei", 
-    6: "Não tenho" 
+    0: "0", 
+    1: "1", 
+    2: "2", 
+    3: "3", 
+    4: "4", 
+    5: "5", 
+    6: "6" 
   },
   
   responsavelMascEstudo: { 
-    0: "Não respondido", 
-    1: "Não frequentou", 
-    2: "Fundamental", 
-    3: "Médio", 
-    4: "Superior", 
-    5: "Não sei", 
-    6: "Não tenho" 
+    0: "0", 
+    1: "1", 
+    2: "2", 
+    3: "3", 
+    4: "4", 
+    5: "5", 
+    6: "6" 
   },
   
   // Responsável com dores
-  responsavelDores: { 0: "Não respondido", 1: "Sim", 2: "Não", 3: "Não sei" },
+  responsavelDores: { 0: "0", 1: "1", 2: "2", 3: "3" },
   
   // Dor nas costas
-  sentiuDor: { 0: "Não respondido", 1: "Sim", 2: "Não", 3: "Não sei" },
+  sentiuDor: { 0: "0", 1: "1", 2: "2", 3: "3" },
   
   // Frequência da dor
   dorFrequente: { 
-    0: "Não respondido", 
-    1: "Uma vez", 
-    2: "Uma vez/mês", 
-    3: "Uma vez/semana", 
-    4: "2-3x/semana", 
-    5: "4+x/semana", 
-    6: "Não sei" 
+    0: "0", 
+    1: "1", 
+    2: "2", 
+    3: "3", 
+    4: "4", 
+    5: "5", 
+    6: "6" 
   },
   
   // Dor impede atividades
-  dorImpede: { 0: "Não respondido", 1: "Sim", 2: "Não", 3: "Não sei" },
+  dorImpede: { 0: "0", 1: "1", 2: "2", 3: "3" },
 };
 
 // Função para mapear valores numéricos para textos
@@ -188,48 +188,48 @@ function mapValueToText(fieldName: string, value: any): string {
 // Cabeçalhos das colunas do CSV
 const CSV_HEADERS = [
   // Dados pessoais
-  'Nome Completo',
-  'Data de Nascimento', 
-  'Peso (kg)',
-  'Altura (cm)',
-  'Responsável',
-  'Data de Preenchimento',
+  'nomeCompleto',
+  'dataNascimento', 
+  'peso',
+  'altura',
+  'responsavel',
+  // 'Data de Preenchimento',
   
   // Atividades físicas
-  'Pratica Exercício',
-  'Qual Exercício',
-  'Dias por Semana',
-  'É Competitivo',
+  'pratica',
+  'qualExercicio',
+  'diasPratica',
+  'competitivo',
   
   // Hábitos
-  'Horas TV por Dia',
-  'Horas PC por Dia', 
-  'Lê na Cama',
-  'Posição para Dormir',
-  'Horas de Sono',
+  'horasTv',
+  'horasPc', 
+  'ler',
+  'posicaoDormir',
+  'horasDorme',
   
   // Identificação
-  'Sexo',
+  'sexo',
   
   // Posturas
-  'Sentar para Escrever',
-  'Sentar para Conversar',
-  'Sentar no Computador',
-  'Pegar Objeto do Chão',
-  'Tipo de Bolsa',
-  'Como Leva Mochila',
+  'sentarEscreverMesa',
+  'sentarCadeiraConversar',
+  'sentarComputador',
+  'pegarObjeto',
+  'bolsas',
+  'levarMochila',
   
   // Dados familiares
-  'Estudo Responsável Feminino',
-  'Estudo Responsável Masculino',
-  'Responsável tem Dores',
-  'Qual Responsável com Dores',
+  'responsavelFemEstudo',
+  'responsavelMascEstudo',
+  'responsavelDores',
+  'qualResponsavelDores',
   
   // Dores nas costas
-  'Sente Dor nas Costas',
-  'Frequência da Dor',
-  'Dor Impede Atividades',
-  'Escala de Dor (0-10)'
+  'sentiuDor',
+  'dorFrequente',
+  'dorImpede',
+  'escalaDor'
 ];
 
 
@@ -241,7 +241,7 @@ function studentToCSVRow(student: StudentData): string[] {
     student.weight?.toString() || "0",
     student.height?.toString() || "0", 
     student.parent || "Não informado",
-    new Date(student.createdAt).toLocaleDateString('pt-BR'),
+    // new Date(student.createdAt).toLocaleDateString('pt-BR'),
     
     // Atividades físicas
     mapValueToText('pratica', student.pratica),
