@@ -43,11 +43,11 @@ export const styles = StyleSheet.create({
   classButton: {
     backgroundColor: Colors.primary,
   },
-  excelButton: {
-    backgroundColor: '#2E8B57', // Verde
-  },
   newFormButton: {
     backgroundColor: '#6A5ACD', // Roxo
+  },
+  feedbackButton: {
+    backgroundColor: '#61b66fff',
   },
   actionButtonText: {
     color: Colors.background,

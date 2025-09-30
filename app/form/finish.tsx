@@ -6,7 +6,6 @@ import { useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { Colors } from "@/constants/Colors";
 import { router } from "expo-router";
-import { exportStudentToCSV } from "@/utils/csvExport";
 
 export default function FinishScreen() {
   const { questFormData, getCompleteFormData, resetFormData } = useQuestForm();
@@ -53,6 +52,10 @@ export default function FinishScreen() {
     router.push("/(tabs)");
   };
 
+  const handleFeedback = () => {
+    router.push("/form/feedback");
+  };
+
   // Função para exibir valor mais amigável
   const getDisplayValue = (value: any, defaultText: string = "Não respondido"): string => {
     if (value === 0 || value === "" || value === null || value === undefined) {
@@ -83,6 +86,14 @@ export default function FinishScreen() {
         >
           <Ionicons name="people" size={24} color={Colors.background} />
           <Text style={styles.actionButtonText}>Salvar em Turma</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity 
+          style={[styles.actionButton, styles.feedbackButton]}
+          onPress={() => handleFeedback()}
+        >
+          <Ionicons name="bulb" size={24} color={Colors.background} />
+          <Text style={styles.actionButtonText}>Como está minha saúde postural?</Text>
         </TouchableOpacity>
 
         <TouchableOpacity 

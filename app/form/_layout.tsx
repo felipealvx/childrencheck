@@ -59,6 +59,12 @@ export default function FormLayout() {
             title: "Finalizar questionário",
           }}
         />
+        <Stack.Screen
+          name="feedback"
+          options={{
+            title: "Saúde Postural",
+          }}
+        />
       </Stack>
     </QuestProvider>
   );
