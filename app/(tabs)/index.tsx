@@ -30,8 +30,8 @@ const style = StyleSheet.create({
   },
   image: {
     resizeMode: "contain",
-    width: 180,
-    height: 400,
+    width: 300,
+    height: 500,
   },
   button: {
     width: "100%",
