@@ -1,12 +1,13 @@
 import { Input } from "@/components/form/Input/input";
 import { ScrollView, Text, TextInput, View } from "react-native";
 import { styles } from "../../styles/form/stepOne";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import { useRef } from "react";
 import { Button } from "@/components/form/Button";
 import { useRouter } from "expo-router";
 import { QuestProps } from "@/contexts/QuestFormContext";
 import { useQuestForm } from "@/hooks/useQuestForm";
+import { RadioWithInput } from "@/components/form/Radio";
 
 export default function StepOne() {
   const { updateFormData } = useQuestForm();
@@ -143,6 +144,16 @@ export default function StepOne() {
           }}
         />
       </View>
+
+      <RadioWithInput
+        control={control}
+        title="Sexo:"
+        name="sexo"
+        options={[
+          { label: "Masculino", value: 1 },
+          { label: "Feminino", value: 2 },
+        ]}
+      />
 
       <Text style={styles.buttonSubtitle}>
         Avance para continuar a responder o formulário
