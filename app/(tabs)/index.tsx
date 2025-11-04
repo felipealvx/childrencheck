@@ -17,6 +17,14 @@ export default function Index() {
           }}> 
           <Text style={style.buttonText}>Iniciar Coleta</Text>
         </Link>
+        <Link
+          style={style.buttonAbout}
+          href={{
+            pathname: "../about"
+          }}
+        >
+          <Text style={style.buttonAboutText}>Sobre</Text>
+        </Link>
     </View>
   );
 }
@@ -45,4 +53,15 @@ const style = StyleSheet.create({
     color: Colors.surface,
     textAlign: "center"
   },
+  buttonAbout: {
+    width: "100%",
+    marginVertical: 16,
+    padding: 10,
+  },
+  buttonAboutText: {
+    textAlign: "center",
+    fontSize: 18,
+    color: Colors.deepBlue,
+    textDecorationLine: "underline",
+  }
 });
