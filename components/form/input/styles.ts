@@ -18,6 +18,7 @@ export const styles = StyleSheet.create({
     borderRadius: 8,
     padding: 16,
     marginTop: 5,
+    fontSize: 16,
   },
   errorMessage: {
     color: Colors.danger,

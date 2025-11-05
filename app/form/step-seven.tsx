@@ -6,7 +6,7 @@ import { router } from "expo-router";
 import { useQuestForm } from "@/hooks/useQuestForm";
 import { QuestProps } from "@/contexts/QuestFormContext";
 import { RadioWithInput } from "@/components/form/Radio";
-import { SliderWithInput } from "@/components/form/SliderInput";
+import { MotesImage } from "@/components/form/MotesImage";
 
 export default function StepSeven() {
   const { updateFormData } = useQuestForm();
@@ -64,13 +64,32 @@ export default function StepSeven() {
             ]}
           />
 
-          <SliderWithInput
+          <MotesImage
             control={control}
+            title={"Clique no nível de dor que você sente"}
             name="escalaDor"
-            title="Arraste de 0 a 10 baseado na intensidade da dor nas costas nos últimos 3 meses."
-            min={0}
-            max={10}
-            step={1}
+            options={[
+              {
+                value: 1,
+                image: require("../../assets/formImages/motes/1.png"),
+              },
+              {
+                value: 2,
+                image: require("../../assets/formImages/motes/2.png"),
+              },
+              {
+                value: 3,
+                image: require("../../assets/formImages/motes/3.png"),
+              },
+              {
+                value: 4,
+                image: require("../../assets/formImages/motes/4.png"),
+              },
+              {
+                value: 5,
+                image: require("../../assets/formImages/motes/5.png"),
+              },
+            ]}
           />
         </View>
       )}

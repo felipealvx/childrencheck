@@ -30,7 +30,7 @@ export type QuestProps = {
   sentiuDor: 1 | 2 | 3;
   dorFrequente: 1 | 2 | 3 | 4 | 5 | 6;
   dorImpede: 1 | 2 | 3;
-  escalaDor: number;
+  escalaDor: 1 | 2 | 3 | 4 | 5;
 };
 
 type QuestFormContextDataProps = {
@@ -84,7 +84,7 @@ const defaultQuestData: QuestProps = {
   sentiuDor: 0 as any,
   dorFrequente: 0 as any,
   dorImpede: 0 as any,
-  escalaDor: 99,
+  escalaDor: 0 as any,
 };
 
 function QuestProvider({ children }: QuestFormContextProviderProps) {

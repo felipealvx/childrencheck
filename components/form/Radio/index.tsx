@@ -52,7 +52,7 @@ export function RadioWithInput<T extends FieldValues>({
                     value === option.value && styles.radioSelected,
                   ]}
                 />
-                <Text>{option.label}</Text>
+                <Text style={styles.labelInput}>{option.label}</Text>
               </TouchableOpacity>
             ))}
           </View>

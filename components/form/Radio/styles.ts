@@ -2,11 +2,12 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   container: {
-    marginBottom: 10,
+    marginVertical: 10,
   },
   label: { 
     fontSize: 12, 
-    marginBottom: 8
+    marginBottom: 8,
+    color: "gray"
   },
   radioGroup: { 
     flexDirection: "column",
@@ -15,7 +16,7 @@ export const styles = StyleSheet.create({
   radioOption: { 
     flexDirection: "row", 
     alignItems: "center", 
-    marginRight: 20 
+    marginRight: 20, 
   },
   radioCircle: {
     width: 20,
@@ -28,6 +29,9 @@ export const styles = StyleSheet.create({
   radioSelected: { 
     backgroundColor: "#333" 
   },
+  labelInput: {
+    fontSize: 16,
+  },
   input: {
     borderWidth: 1,
     borderColor: "#aaa",
@@ -36,7 +40,7 @@ export const styles = StyleSheet.create({
     marginTop: 10,
   },
   title: {
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: "bold"
   }
 });
