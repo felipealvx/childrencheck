@@ -1,12 +1,14 @@
 import { Input } from "@/components/form/Input/input";
 import { ScrollView, Text, TextInput, View } from "react-native";
 import { styles } from "../../styles/form/stepOne";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import { useRef } from "react";
 import { Button } from "@/components/form/Button";
 import { useRouter } from "expo-router";
 import { QuestProps } from "@/contexts/QuestFormContext";
 import { useQuestForm } from "@/hooks/useQuestForm";
+import { RadioWithInput } from "@/components/form/Radio";
+import { MotesImage } from "@/components/form/MotesImage";
 
 export default function StepOne() {
   const { updateFormData } = useQuestForm();
@@ -40,7 +42,7 @@ export default function StepOne() {
           // -------------- nome completo -------------
           ref={fullNameRef}
           error={errors.fullName?.message}
-          title={"Nome Completo"}
+          title={"Qual é o seu nome?"}
           formProps={{
             name: "fullName",
             control,
@@ -57,7 +59,7 @@ export default function StepOne() {
           // -------------- data de nascimento -------------
           ref={ageRef}
           error={errors.age?.message}
-          title={"Data de Nascimento"}
+          title={"Qual sua data de nascimento?"}
           formProps={{
             name: "age",
             control,
@@ -82,12 +84,11 @@ export default function StepOne() {
           // -------------- peso -------------
           ref={weightRef}
           error={errors.weight?.message}
-          title={"Peso"}
+          title={"Qual seu peso?"}
           formProps={{
             name: "weight",
             control,
             rules: {
-              required: "O peso é obrigatório",
               pattern: {
                 value: /^\d+(\.\d{1,3})?$/,
                 message: "Formato inválido",
@@ -106,12 +107,11 @@ export default function StepOne() {
           // -------------- estatura -------------
           ref={heightRef}
           error={errors.height?.message}
-          title={"Estatura"}
+          title={"Qual sua altura?"}
           formProps={{
             name: "height",
             control,
             rules: {
-              required: "A estatura é obrigatória",
               pattern: {
                 value: /^\d{1,3}?$/,
                 message: "Formato inválido",
@@ -130,7 +130,7 @@ export default function StepOne() {
           // -------------- responsável -------------
           ref={parentRef}
           error={errors.parent?.message}
-          title={"Responsável"}
+          title={"Quem é seu responsável?"}
           formProps={{
             name: "parent",
             control,
@@ -143,6 +143,17 @@ export default function StepOne() {
           }}
         />
       </View>
+
+      <RadioWithInput
+        control={control}
+        title="Qual seu sexo?"
+        name="sexo"
+        options={[
+          { label: "Masculino", value: 1 },
+          { label: "Feminino", value: 2 },
+          { label: "Prefiro não dizer", value: 3 },
+        ]}
+      />
 
       <Text style={styles.buttonSubtitle}>
         Avance para continuar a responder o formulário

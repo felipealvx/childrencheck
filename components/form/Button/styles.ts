@@ -13,7 +13,7 @@ export const styles = StyleSheet.create({
   },
   title: {
     fontWeight: "bold",
-    color: Colors.background,
+    color: "#ffffff",
     fontSize: 20,
   }
 })

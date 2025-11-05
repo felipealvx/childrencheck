@@ -9,19 +9,20 @@ export const styles = StyleSheet.create({
     
   },
   title: {
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: "bold",
   },
   input: {
     borderWidth: 1,
     borderColor: "#a1a3afff",
     borderRadius: 8,
-    padding: 10,
+    padding: 16,
     marginTop: 5,
+    fontSize: 16,
   },
   errorMessage: {
     color: Colors.danger,
-    fontSize: 12,
+    fontSize: 14,
     marginTop: 4,
   }
 })

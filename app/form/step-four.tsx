@@ -9,7 +9,8 @@ import { QuestProps } from "@/contexts/QuestFormContext";
 import { SelectImage } from "@/components/form/SelectImage";
 
 export default function StepFour() {
-  const { updateFormData } = useQuestForm();
+  const { updateFormData, questFormData } = useQuestForm();
+  
 
   const { control, handleSubmit } = useForm<QuestProps>();
 
@@ -20,20 +21,10 @@ export default function StepFour() {
       pathname: "/form/step-five", // caminho do próximo step
     });
   }
-
-  const sexo = useWatch({ control, name: "sexo" });
+  const sexo = questFormData.sexo;
 
   return (
     <ScrollView style={styles.container}>
-      <RadioWithInput
-        control={control}
-        title="Sexo:"
-        name="sexo"
-        options={[
-          { label: "Masculino", value: 1 },
-          { label: "Feminino", value: 2 },
-        ]}
-      />
       {sexo == 1 ? (
         // --------------- masculino questionário -----------------
         <View>
