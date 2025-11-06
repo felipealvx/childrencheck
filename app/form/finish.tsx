@@ -194,7 +194,8 @@ export default function FinishScreen() {
                 style={styles.modalCloseButton}
                 onPress={() => setIsClassModalVisible(false)}
               >
-                <Text style={styles.modalCloseButtonText}>Fechar</Text>
+                {/* <Text style={styles.modalCloseButtonText}>Fechar</Text> */}
+                <Ionicons name="close-circle" size={30} color="#363636ff" />
               </TouchableOpacity>
             </View>
           </View>
