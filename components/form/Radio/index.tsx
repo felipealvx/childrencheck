@@ -12,6 +12,7 @@ type ExtraInput<T extends FieldValues> = {
   when: number; // valor que ativa o input extra
   name: Path<T>; // nome do campo extra
   placeholder?: string;
+  titleLabel?: string;
 };
 
 type Props<T extends FieldValues> = {
@@ -43,7 +44,10 @@ export function RadioWithInput<T extends FieldValues>({
             {options.map((option) => (
               <TouchableOpacity
                 key={option.value}
-                style={styles.radioOption}
+                style={[
+                  styles.radioOption,
+                  value === option.value && styles.selected,
+                ]}
                 onPress={() => onChange(option.value)}
               >
                 <View
@@ -52,7 +56,14 @@ export function RadioWithInput<T extends FieldValues>({
                     value === option.value && styles.radioSelected,
                   ]}
                 />
-                <Text style={styles.labelInput}>{option.label}</Text>
+                <Text
+                  style={[
+                    styles.labelInput,
+                    value === option.value && styles.textSelected,
+                  ]}
+                >
+                  {option.label}
+                </Text>
               </TouchableOpacity>
             ))}
           </View>
@@ -63,12 +74,15 @@ export function RadioWithInput<T extends FieldValues>({
               control={control}
               name={extraInput.name}
               render={({ field: { onChange, value } }) => (
-                <TextInput
-                  style={styles.input}
-                  placeholder={extraInput.placeholder}
-                  value={value}
-                  onChangeText={onChange}
-                />
+                <View>
+                  <Text style={styles.titleLabel}>{extraInput.titleLabel}</Text>
+                  <TextInput
+                    style={styles.input}
+                    placeholder={extraInput.placeholder}
+                    value={value}
+                    onChangeText={onChange}
+                  />
+                </View>
               )}
             />
           )}

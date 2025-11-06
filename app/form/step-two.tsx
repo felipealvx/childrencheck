@@ -37,6 +37,7 @@ export default function StepTwo() {
           when: 1,
           name: "qual",
           placeholder: "Qual exercício?",
+          titleLabel: "Por favor, especifique o exercício que você pratica:",
         }}
       />
 

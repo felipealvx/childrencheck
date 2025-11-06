@@ -37,6 +37,11 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 100,
   },
+  image: {
+    resizeMode: "contain",
+    width: 300,
+    height: 300,
+  },
   emptyStateText: {
     fontSize: 18,
     fontWeight: 'bold',
@@ -58,6 +63,8 @@ export const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
     shadowRadius: 4,
+    borderWidth: 1,
+    borderColor: "#9e9e9e9d"
   },
   classHeader: {
     flexDirection: 'row',
@@ -133,6 +140,11 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 20,
   },
+  studentsImage: {
+    resizeMode: "contain",
+    width: "100%",
+    height: 150,
+  },
   noStudentsText: {
     fontSize: 16,
     color: '#999',
@@ -151,7 +163,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   modalContent: {
-    backgroundColor: Colors.background,
+    backgroundColor: "#f3f3f3ff",
     padding: 20,
     borderRadius: 12,
     width: '80%',
@@ -165,11 +177,12 @@ export const styles = StyleSheet.create({
   },
   modalInput: {
     borderWidth: 1,
-    borderColor: '#ddd',
+    borderColor: '#c2c2c2ff',
     borderRadius: 8,
     padding: 12,
     fontSize: 16,
     marginBottom: 20,
+    backgroundColor: '#e6e6e6ff'
   },
   modalButtons: {
     flexDirection: 'row',
@@ -182,17 +195,17 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   cancelButton: {
-    backgroundColor: '#f0f0f0',
+    backgroundColor: '#ff4040ff',
   },
   confirmButton: {
     backgroundColor: Colors.primary,
   },
   cancelButtonText: {
-    color: '#666',
+    color: '#ffffffff',
     fontWeight: 'bold',
   },
   confirmButtonText: {
-    color: Colors.background,
+    color: "white",
     fontWeight: 'bold',
   },
   loadingContainer: {
@@ -200,5 +213,5 @@ export const styles = StyleSheet.create({
   },
   loadingText: {
     
-  }
+  },
 });
