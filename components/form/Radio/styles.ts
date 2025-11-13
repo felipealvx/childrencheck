@@ -15,7 +15,6 @@ export const styles = StyleSheet.create({
     gap: 8,
   },
   radioOption: { 
-    height: 40,
     flexDirection: "row", 
     alignItems: "center",
     borderWidth: 1,
@@ -45,6 +44,8 @@ export const styles = StyleSheet.create({
   },
   labelInput: {
     fontSize: 16,
+    paddingVertical: 5,
+    paddingRight: 20,
   },
   titleLabel: {
     fontSize: 18,

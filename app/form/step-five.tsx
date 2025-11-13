@@ -5,7 +5,7 @@ import { Button } from "@/components/form/Button";
 import { router } from "expo-router";
 import { useQuestForm } from "@/hooks/useQuestForm";
 import { QuestProps } from "@/contexts/QuestFormContext";
-import { SelectImage } from "@/components/form/SelectImage";
+import { RadioWithInput } from "@/components/form/Radio";
 
 export default function StepFive() {
   const { updateFormData, questFormData } = useQuestForm();
@@ -20,183 +20,41 @@ export default function StepFive() {
     });
   }
 
-  const sexo = questFormData.sexo;
-
   return (
     <ScrollView style={styles.container}>
-      {sexo == 1 ? (
-        // --------------- masculino questionário -----------------
-        <View>
-          <SelectImage
-            control={control}
-            title="Como você costuma pegar objeto do chão?"
-            name="pegarObjeto"
-            options={[
-              {
-                value: 1,
-                image: require("../../assets/formImages/backpeiImages/masculino/pegarObjeto/0401.png"),
-              },
-              {
-                value: 2,
-                image: require("../../assets/formImages/backpeiImages/masculino/pegarObjeto/0402.png"),
-              },
-              {
-                value: 3,
-                image: require("../../assets/formImages/backpeiImages/masculino/pegarObjeto/0403.png"),
-              },
-              {
-                value: 4,
-                image: require("../../assets/formImages/backpeiImages/masculino/pegarObjeto/0404.png"),
-              },
-              { value: 5, image: require("../../assets/formImages/outro.png") },
-            ]}
-          />
-
-          <SelectImage
-            control={control}
-            title="O que você utiliza para carregar o material escolar? Marque uma das opções abaixo."
-            name="bolsas"
-            options={[
-              {
-                value: 1,
-                image: require("../../assets/formImages/backpeiImages/bolsas/01.png"),
-              },
-              {
-                value: 2,
-                image: require("../../assets/formImages/backpeiImages/bolsas/02.png"),
-              },
-              {
-                value: 3,
-                image: require("../../assets/formImages/backpeiImages/bolsas/03.png"),
-              },
-              {
-                value: 4,
-                image: require("../../assets/formImages/backpeiImages/bolsas/04.png"),
-              },
-              {
-                value: 5,
-                image: require("../../assets/formImages/backpeiImages/bolsas/05.png"),
-              },
-              { value: 6, image: require("../../assets/formImages/outro.png") },
-            ]}
-          />
-
-          <SelectImage
-            control={control}
-            title="Como você leva sua mochila escolar?"
-            name="levarMochila"
-            options={[
-              {
-                value: 1,
-                image: require("../../assets/formImages/backpeiImages/masculino/levarMochila/0501.png"),
-              },
-              {
-                value: 2,
-                image: require("../../assets/formImages/backpeiImages/masculino/levarMochila/0502.png"),
-              },
-              {
-                value: 3,
-                image: require("../../assets/formImages/backpeiImages/masculino/levarMochila/0503.png"),
-              },
-              {
-                value: 4,
-                image: require("../../assets/formImages/backpeiImages/masculino/levarMochila/0504.png"),
-              },
-              {
-                value: 5,
-                image: require("../../assets/formImages/backpeiImages/masculino/levarMochila/0505.png"),
-              },
-              { value: 6, image: require("../../assets/formImages/outro.png") },
-            ]}
-          />
-        </View>
-      ) : (
-        <View>
-          <SelectImage
-            control={control}
-            title="Como você costuma pegar objeto do chão?"
-            name="pegarObjeto"
-            options={[
-              {
-                value: 1,
-                image: require("../../assets/formImages/backpeiImages/feminino/pegarObjeto/01.png"),
-              },
-              {
-                value: 2,
-                image: require("../../assets/formImages/backpeiImages/feminino/pegarObjeto/02.png"),
-              },
-              {
-                value: 3,
-                image: require("../../assets/formImages/backpeiImages/feminino/pegarObjeto/03.png"),
-              },
-              {
-                value: 4,
-                image: require("../../assets/formImages/backpeiImages/feminino/pegarObjeto/04.png"),
-              },
-              { value: 5, image: require("../../assets/formImages/outro.png") },
-            ]}
-          />
-
-          <SelectImage
-            control={control}
-            title="O que você utiliza para carregar o material escolar? Marque uma das opções abaixo."
-            name="bolsas"
-            options={[
-              {
-                value: 1,
-                image: require("../../assets/formImages/backpeiImages/bolsas/01.png"),
-              },
-              {
-                value: 2,
-                image: require("../../assets/formImages/backpeiImages/bolsas/02.png"),
-              },
-              {
-                value: 3,
-                image: require("../../assets/formImages/backpeiImages/bolsas/03.png"),
-              },
-              {
-                value: 4,
-                image: require("../../assets/formImages/backpeiImages/bolsas/04.png"),
-              },
-              {
-                value: 5,
-                image: require("../../assets/formImages/backpeiImages/bolsas/05.png"),
-              },
-              { value: 6, image: require("../../assets/formImages/outro.png") },
-            ]}
-          />
-
-          <SelectImage
-            control={control}
-            title="Como você leva sua mochila escolar?"
-            name="levarMochila"
-            options={[
-              {
-                value: 1,
-                image: require("../../assets/formImages/backpeiImages/feminino/levarMochila/01.png"),
-              },
-              {
-                value: 2,
-                image: require("../../assets/formImages/backpeiImages/feminino/levarMochila/02.png"),
-              },
-              {
-                value: 3,
-                image: require("../../assets/formImages/backpeiImages/feminino/levarMochila/03.png"),
-              },
-              {
-                value: 4,
-                image: require("../../assets/formImages/backpeiImages/feminino/levarMochila/04.png"),
-              },
-              {
-                value: 5,
-                image: require("../../assets/formImages/backpeiImages/feminino/levarMochila/05.png"),
-              },
-              { value: 6, image: require("../../assets/formImages/outro.png") },
-            ]}
-          />
-        </View>
-      )}
-
+      <RadioWithInput
+        control={control}
+        title="Fora das aulas de Educação Física, quantos dias por semana você pratica atividades que te deixam ofegante ou cansado, como correr, jogar futebol, andar de bicicleta, etc.?"
+        name="diasPraticaAtv"
+        options={[
+          { label: "Nenhum dia", value: 1 },
+          { label: "1 ou 2 dias", value: 2 },
+          { label: "3 ou 4 dias", value: 3 },
+          { label: "5 ou mais", value: 4 },
+        ]}
+      />
+      <RadioWithInput
+        control={control}
+        title="Nos finais de semana, quanto tempo você passa em atividades como essa?"
+        name="tempoAtvFimSemana"
+        options={[
+          { label: "Menos de 1 hora", value: 1 },
+          { label: "Entre 1 e 2 horas", value: 2 },
+          { label: "Mais de 2 horas", value: 3 },
+          { label: "Não pratico", value: 4 },
+        ]}
+      />
+      <RadioWithInput
+        control={control}
+        title="E, em um dia normal de aula, quantas horas você passa sentado (na escola, fazendo lição, em telas)?"
+        name="horasSentado"
+        options={[
+          { label: "Menos de 2 horas", value: 1 },
+          { label: "De 2 a 4 horas", value: 2 },
+          { label: "De 4 a 6 horas", value: 3 },
+          { label: "Mais de 6 horas", value: 4 },
+        ]}
+      />
       <Text style={styles.buttonSubtitle}>
         Avance para continuar a responder o formulário
       </Text>

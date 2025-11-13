@@ -11,7 +11,6 @@ export default function StepTwo() {
   const { updateFormData } = useQuestForm();
 
   const { control, handleSubmit } = useForm<QuestProps>({
-    defaultValues: { qual: "" },
   });
 
   // ------------ funcao para passar de step -----------------
@@ -24,42 +23,53 @@ export default function StepTwo() {
 
   return (
     <ScrollView style={styles.container}>
-      <Text>Responda as perguntas abaixo</Text>
       <RadioWithInput
         control={control}
-        title="Você pratica algum exercicio físico ou esporte regularmente? (Na escola ou fora dela)?"
-        name="pratica"
+        title="Como você descreve a sua posição mais comum na cadeira da escola?"
+        name="posicaoComumCadeira"
         options={[
-          { label: "Sim", value: 1 },
-          { label: "Não", value: 2 },
-        ]}
-        extraInput={{
-          when: 1,
-          name: "qual",
-          placeholder: "Qual exercício?",
-          titleLabel: "Por favor, especifique o exercício que você pratica:",
-        }}
-      />
-
-      <RadioWithInput
-        control={control}
-        title="Quantos dias você pratica este exercício/esporte por semana?"
-        name="diasPratica"
-        options={[
-          { label: "De 1 a 2 dias", value: 1 },
-          { label: "De 3 a 4 dias", value: 2 },
-          { label: "5 ou mais dias", value: 3 },
-          { label: "Não sei responder", value: 4 },
+          { label: "Sentado correto, costas retas e pés no chão", value: 1 },
+          { label: "Inclinado para frente, apoiando a cabeça na mão", value: 2 },
+          { label: "Escorregado na cadeira, com as costas no final do encosto", value: 3 },
+          { label: "Sentado com as pernas cruzadas na cadeira", value: 4 },
+          { label: "Inclinado para os lados, apoiando nos cotovelos na carteira", value: 5 },
         ]}
       />
 
       <RadioWithInput
         control={control}
-        title="Você pratica este exercício físico ou esporte de maneira competitiva (participa de competições)?"
-        name="competitivo"
+        title="Com que frequência suas costas ficam encostadas no encosto da cadeira?"
+        name="freqEncosto"
+        options={[
+          { label: "Sempre", value: 1 },
+          { label: "Quase Sempre", value: 2 },
+          { label: "Às Vezes", value: 3 },
+          { label: "Quase Nunca", value: 4 },
+          { label: "Nunca", value: 5 },
+        ]}
+      />
+
+      <RadioWithInput
+        control={control}
+        title="Onde você costuma apoiar os braços quando está escrevendo ou usando o computador?"
+        name="apoioEscrevendoComputador"
+        options={[
+          { label: "Sobre a mesa, de forma relaxada", value: 1 },
+          { label: "Um braço na mesa e o outro no colo", value: 2 },
+          { label: "Com os ombros elevados, sem apoio confortável", value: 3 },
+        ]}
+      />
+
+      <RadioWithInput
+        control={control}
+        title="Você costuma ajustar a altura da cadeira e a distância da mesa quando senta?"
+        name="ajusteCadeiraMesa"
         options={[
           { label: "Sim", value: 1 },
-          { label: "Não", value: 2 },
+          { label: "Sempre", value: 2 },
+          { label: "Às vezes", value: 3 },
+          { label: "Nunca", value: 4 },
+          { label: "Não dá pra ajustar", value: 5 },
         ]}
       />
 

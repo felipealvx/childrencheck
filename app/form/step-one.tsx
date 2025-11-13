@@ -1,14 +1,13 @@
 import { Input } from "@/components/form/Input/input";
 import { ScrollView, Text, TextInput, View } from "react-native";
 import { styles } from "../../styles/form/stepOne";
-import { useForm, useWatch } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { useRef } from "react";
 import { Button } from "@/components/form/Button";
 import { useRouter } from "expo-router";
 import { QuestProps } from "@/contexts/QuestFormContext";
 import { useQuestForm } from "@/hooks/useQuestForm";
 import { RadioWithInput } from "@/components/form/Radio";
-import { MotesImage } from "@/components/form/MotesImage";
 
 export default function StepOne() {
   const { updateFormData } = useQuestForm();
@@ -134,7 +133,6 @@ export default function StepOne() {
           formProps={{
             name: "parent",
             control,
-            rules: { required: "O responsável é obrigatório" },
           }}
           inputProps={{
             placeholder: "Familiar responsável",

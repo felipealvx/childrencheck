@@ -22,67 +22,60 @@ export default function StepThree() {
 
   return (
     <ScrollView style={styles.container}>
-      <Text>Responda as perguntas abaixo</Text>
       <RadioWithInput
         control={control}
-        title="Quantas horas por dia você permanece sentado assistindo televisão?"
-        name="horasTv"
+        title="Nos últimos dias, com que frequência você se sentiu nervoso, ansioso ou muito preocupado?"
+        name="freqAnsiedade"
         options={[
-          { label: "0 a 1 hora", value: 1 },
-          { label: "2 a 3 horas", value: 2 },
-          { label: "4 a 5 horas", value: 3 },
-          { label: "6 a 7 horas", value: 4 },
-          { label: "8 ou mais horas", value: 5 },
-          { label: "Não sei responder", value: 6 },
+          { label: "Nunca", value: 1 },
+          { label: "Raramentes", value: 2 },
+          { label: "Às Vezes", value: 3 },
+          { label: "Quase Sempre", value: 4 },
+          { label: "Sempre", value: 5 },
         ]}
       />
 
       <RadioWithInput
         control={control}
-        title="Quantas horas você permanece sentado utilizando o computador?"
-        name="horasPc"
+        title="Quando você tem uma prova ou tarefa importante, como seu corpo reage?"
+        name="reageProva"
         options={[
-          { label: "0 a 1 hora", value: 1 },
-          { label: "2 a 3 horas", value: 2 },
-          { label: "4 a 5 horas", value: 3 },
-          { label: "6 ou mais horas", value: 4 },
-          { label: "Não sei responder", value: 5 },
+          { label: "Fico tranquilo", value: 1 },
+          {
+            label: "Sinto um frio na barriga, mas consigo me concentrar",
+            value: 2,
+          },
+          {
+            label:
+              "Fico com as mãos suadas, o coração acelerado e a mente a mil",
+            value: 3,
+          },
+          { label: "Sinto dor de barriga ou dor de cabeça", value: 4 },
         ]}
       />
 
       <RadioWithInput
         control={control}
-        title="Você costuma ler e/ou estudar na cama?"
-        name="ler"
+        title="Você nota que seus ombros ficam tensionados (duros e elevados) ou que você 'trava' a mandíbula quando está concentrado ou estressado?"
+        name="membrosTensao"
         options={[
           { label: "Sim", value: 1 },
-          { label: "Não", value: 2 },
+          { label: "Frequentemente", value: 2 },
           { label: "As vezes", value: 3 },
+          { label: "Raramente", value: 4 },
+          { label: "Nunca", value: 5 },
         ]}
       />
 
       <RadioWithInput
         control={control}
-        title="Qual sua posição preferida para dormir?"
-        name="posicaoDormir"
+        title="Nos últimos meses, como você classificaria seu nível de estresse com as coisas da escola e do dia a dia?"
+        name="estresseGeral"
         options={[
-          { label: "De lado", value: 1 },
-          { label: "De bruços (barriga pra baixo)", value: 2 },
-          { label: "De costas (barriga pra cima)", value: 3 },
-          { label: "Não sei responder", value: 4 },
-        ]}
-      />
-
-      <RadioWithInput
-        control={control}
-        title="Quantas horas você dorme por noite?"
-        name="horasDorme"
-        options={[
-          { label: "0 a 6 horas", value: 1 },
-          { label: "7 horas", value: 2 },
-          { label: "8 a 9 horas", value: 3 },
-          { label: "10 horas ou mais", value: 4 },
-          { label: "Não sei responder", value: 5 },
+          { label: "Nenhum estresse", value: 1 },
+          { label: "Um pouco estressado", value: 2 },
+          { label: "Estressado", value: 3 },
+          { label: "Muito Estressado", value: 4 },
         ]}
       />
 
