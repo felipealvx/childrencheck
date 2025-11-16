@@ -7,4 +7,11 @@ export const Colors = {
   background: '#DDE5ED',
   text: '#2C2C2C',
   danger: '#f04770',
+
+  // priority
+  hight: '#f04770',
+  medium: '#FF9800',
+  low: '#4CAF50',
+  purple: '#9C27B0',
+  blue: '#2196F3',
 };

@@ -35,11 +35,11 @@ export default function StepFour() {
               options={[
                 {
                   value: 1,
-                  image: require("../../assets/formImages/motes/1.png"),
+                  image: require("../../assets/formImages/motes/5.png"),
                 },
                 {
                   value: 2,
-                  image: require("../../assets/formImages/motes/2.png"),
+                  image: require("../../assets/formImages/motes/4.png"),
                 },
                 {
                   value: 3,
@@ -47,11 +47,11 @@ export default function StepFour() {
                 },
                 {
                   value: 4,
-                  image: require("../../assets/formImages/motes/4.png"),
+                  image: require("../../assets/formImages/motes/2.png"),
                 },
                 {
                   value: 5,
-                  image: require("../../assets/formImages/motes/5.png"),
+                  image: require("../../assets/formImages/motes/1.png"),
                 },
               ]}
             />
