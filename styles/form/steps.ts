@@ -6,7 +6,7 @@ const styles = StyleSheet.create ({
   },
   buttonSubtitle: {
     textAlign: "center",
-  }
+  },
 })
 
 export {styles};

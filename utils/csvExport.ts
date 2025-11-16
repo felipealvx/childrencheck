@@ -3,172 +3,37 @@ import * as Sharing from 'expo-sharing';
 import { Alert } from 'react-native';
 import { StudentData, ClassData } from '@/contexts/ClassesContext';
 
-// Mapeamento dos valores numéricos para textos descritivos
 const valueMapping = {
-  // Sexo
-  sexo: { 0: "0", 1: "1", 2: "2" },
-  
-  // Prática de exercício
-  pratica: { 0: "0", 1: "1", 2: "2" },
-  
-  // Dias de prática
-  diasPratica: { 
-    0: "0", 
-    1: "1", 
-    2: "2", 
-    3: "3", 
-    4: "4" 
-  },
-  
-  // Competitivo
-  competitivo: { 0: "0", 1: "1", 2: "2" },
-  
-  // Horas TV
-  horasTv: { 
-    0: "0", 
-    1: "1", 
-    2: "2", 
-    3: "3", 
-    4: "4", 
-    5: "5", 
-    6: "6" 
-  },
-  
-  // Horas PC
-  horasPc: { 
-    0: "0", 
-    1: "1", 
-    2: "2", 
-    3: "3", 
-    4: "4", 
-    5: "5" 
-  },
-  
-  // Ler na cama
-  ler: { 0: "0", 1: "1", 2: "2", 3: "3" },
-  
-  // Posição para dormir
-  posicaoDormir: { 
-    0: "0", 
-    1: "1", 
-    2: "2", 
-    3: "3", 
-    4: "4" 
-  },
-  
-  // Horas de sono
-  horasDorme: { 
-    0: "0", 
-    1: "1", 
-    2: "2", 
-    3: "3", 
-    4: "4", 
-    5: "5" 
-  },
-  
-  // Posturas (1-6 representam diferentes posições)
-  sentarEscreverMesa: { 
-    0: "0", 
-    1: "1", 
-    2: "2", 
-    3: "3", 
-    4: "4", 
-    5: "5", 
-    6: "6" 
-  },
-  
-  sentarCadeiraConversar: { 
-    0: "0", 
-    1: "1", 
-    2: "2", 
-    3: "3", 
-    4: "4", 
-    5: "5", 
-    6: "6" 
-  },
-  
-  sentarComputador: { 
-    0: "0", 
-    1: "1", 
-    2: "2", 
-    3: "3", 
-    4: "4", 
-    5: "5", 
-    6: "6" 
-  },
-  
-  // Pegar objeto do chão
-  pegarObjeto: { 
-    0: "0", 
-    1: "1", 
-    2: "2", 
-    3: "3", 
-    4: "4", 
-    5: "5" 
-  },
-  
-  // Tipo de bolsa
-  bolsas: { 
-    0: "0", 
-    1: "1", 
-    2: "2", 
-    3: "3", 
-    4: "4", 
-    5: "5", 
-    6: "6" 
-  },
-  
-  // Como levar mochila
-  levarMochila: { 
-    0: "0", 
-    1: "1", 
-    2: "2", 
-    3: "3", 
-    4: "4", 
-    5: "5", 
-    6: "6" 
-  },
-  
-  // Escolaridade responsáveis
-  responsavelFemEstudo: { 
-    0: "0", 
-    1: "1", 
-    2: "2", 
-    3: "3", 
-    4: "4", 
-    5: "5", 
-    6: "6" 
-  },
-  
-  responsavelMascEstudo: { 
-    0: "0", 
-    1: "1", 
-    2: "2", 
-    3: "3", 
-    4: "4", 
-    5: "5", 
-    6: "6" 
-  },
-  
-  // Responsável com dores
-  responsavelDores: { 0: "0", 1: "1", 2: "2", 3: "3" },
-  
-  // Dor nas costas
-  sentiuDor: { 0: "0", 1: "1", 2: "2", 3: "3" },
-  
-  // Frequência da dor
-  dorFrequente: { 
-    0: "0", 
-    1: "1", 
-    2: "2", 
-    3: "3", 
-    4: "4", 
-    5: "5", 
-    6: "6" 
-  },
-  
-  // Dor impede atividades
-  dorImpede: { 0: "0", 1: "1", 2: "2", 3: "3" },
+  // modulo 1
+  sexo: { 0: "0", 1: "1", 2: "2", 3: "3" },
+
+  // modulo 2
+  posicaoComumCadeira: { 0: "0", 1: "1", 2: "2", 3: "3", 4: "4", 5: "5" },
+  freqEncosto: { 0: "0", 1: "1", 2: "2", 3: "3", 4: "4", 5: "5" },
+  apoioEscrevendoComputador: { 0: "0", 1: "1", 2: "2", 3: "3" },
+  ajusteCadeiraMesa: { 0: "0", 1: "1", 2: "2", 3: "3", 4: "4", 5: "5" },
+
+  // modulo 3
+  freqAnsiedade: { 0: "0", 1: "1", 2: "2", 3: "3", 4: "4", 5: "5" },
+  reageProva: { 0: "0", 1: "1", 2: "2", 3: "3", 4: "4" },
+  membrosTensao: { 0: "0", 1: "1", 2: "2", 3: "3", 4: "4", 5: "5" },
+  estresseGeral: { 0: "0", 1: "1", 2: "2", 3: "3", 4: "4" },
+
+  // modulo 4
+  dorGeral: { 0: "0", 1: "1", 2: "2" },
+  escalaDor: { 0: "0", 1: "1", 2: "2", 3: "3", 4: "4", 5: "5" },
+  dorDuracao: { 0: "0", 1: "1", 2: "2", 3: "3" },
+  dorPioraEstresse: { 0: "0", 1: "1", 2: "2", 3: "3", 4: "4" },
+
+  // modulo 5
+  diasPraticaAtv: { 0: "0", 1: "1", 2: "2", 3: "3", 4: "4" },
+  tempoAtvFimSemana: { 0: "0", 1: "1", 2: "2", 3: "3", 4: "4" },
+  horasSentado: { 0: "0", 1: "1", 2: "2", 3: "3", 4: "4" },
+
+  // modulo 6
+  classificaSono: { 0: "0", 1: "1", 2: "2", 3: "3", 4: "4", 5: "5" },
+  freqAcorda: { 0: "0", 1: "1", 2: "2", 3: "3", 4: "4", 5: "5" },
+  freqAnsiedadeSono: { 0: "0", 1: "1", 2: "2", 3: "3", 4: "4", 5: "5" },
 };
 
 // Função para mapear valores numéricos para textos
@@ -193,43 +58,36 @@ const CSV_HEADERS = [
   'peso',
   'altura',
   'responsavel',
+  'sexo',
   // 'Data de Preenchimento',
   
-  // Atividades físicas
-  'pratica',
-  'qualExercicio',
-  'diasPratica',
-  'competitivo',
+  // modulo 2
+  'posicaoComumCadeira',
+  'freqEncosto',
+  'apoioEscrevendoComputador',
+  'ajusteCadeiraMesa',
   
-  // Hábitos
-  'horasTv',
-  'horasPc', 
-  'ler',
-  'posicaoDormir',
-  'horasDorme',
+  // modulo 3
+  'freqAnsiedade',
+  'reageProva', 
+  'membrosTensao',
+  'estresseGeral',
   
-  // Identificação
-  'sexo',
+  // modulo 4
+  'dorGeral',
+  'escalaDor',
+  'dorDuracao',
+  'dorPioraEstresse',
   
-  // Posturas
-  'sentarEscreverMesa',
-  'sentarCadeiraConversar',
-  'sentarComputador',
-  'pegarObjeto',
-  'bolsas',
-  'levarMochila',
+  // modulo 5
+  'diasPraticaAtv',
+  'tempoAtvFimSemana',
+  'horasSentado',
   
-  // Dados familiares
-  'responsavelFemEstudo',
-  'responsavelMascEstudo',
-  'responsavelDores',
-  'qualResponsavelDores',
-  
-  // Dores nas costas
-  'sentiuDor',
-  'dorFrequente',
-  'dorImpede',
-  'escalaDor'
+  // modulo 6
+  'classificaSono',
+  'freqAcorda',
+  'freqAnsiedadeSono',
 ];
 
 
@@ -241,43 +99,37 @@ function studentToCSVRow(student: StudentData): string[] {
     student.weight?.toString() || "0",
     student.height?.toString() || "0", 
     student.parent || "Não informado",
+    mapValueToText('sexo', student.sexo),
     // new Date(student.createdAt).toLocaleDateString('pt-BR'),
     
-    // Atividades físicas
-    mapValueToText('pratica', student.pratica),
-    student.qual || "N/A",
-    mapValueToText('diasPratica', student.diasPratica),
-    mapValueToText('competitivo', student.competitivo),
+    // modulo 2
+    mapValueToText('posicaoComumCadeira', student.posicaoComumCadeira),
+    mapValueToText('freqEncosto', student.freqEncosto),
+    mapValueToText('apoioEscrevendoComputador', student.apoioEscrevendoComputador),
+    mapValueToText('ajusteCadeiraMesa', student.ajusteCadeiraMesa),
+
     
-    // Hábitos
-    mapValueToText('horasTv', student.horasTv),
-    mapValueToText('horasPc', student.horasPc),
-    mapValueToText('ler', student.ler),
-    mapValueToText('posicaoDormir', student.posicaoDormir),
-    mapValueToText('horasDorme', student.horasDorme),
+    // modulo 3
+    mapValueToText('freqAnsiedade', student.freqAnsiedade),
+    mapValueToText('reageProva', student.reageProva),
+    mapValueToText('membrosTensao', student.membrosTensao),
+    mapValueToText('estresseGeral', student.estresseGeral),
     
-    // Identificação
-    mapValueToText('sexo', student.sexo),
+    // modulo 4
+    mapValueToText('dorGeral', student.dorGeral),
+    mapValueToText('escalaDor', student.escalaDor),
+    mapValueToText('dorDuracao', student.dorDuracao),
+    mapValueToText('dorPioraEstresse', student.dorPioraEstresse),
     
-    // Posturas
-    mapValueToText('sentarEscreverMesa', student.sentarEscreverMesa),
-    mapValueToText('sentarCadeiraConversar', student.sentarCadeiraConversar),
-    mapValueToText('sentarComputador', student.sentarComputador),
-    mapValueToText('pegarObjeto', student.pegarObjeto),
-    mapValueToText('bolsas', student.bolsas),
-    mapValueToText('levarMochila', student.levarMochila),
+    // modulo 5
+    mapValueToText('diasPraticaAtv', student.diasPraticaAtv),
+    mapValueToText('tempoAtvFimSemana', student.tempoAtvFimSemana),
+    mapValueToText('horasSentado', student.horasSentado),
     
-    // Dados familiares
-    mapValueToText('responsavelFemEstudo', student.responsavelFemEstudo),
-    mapValueToText('responsavelMascEstudo', student.responsavelMascEstudo),
-    mapValueToText('responsavelDores', student.responsavelDores),
-    student.qualResponsavelDores || "N/A",
-    
-    // Dores nas costas
-    mapValueToText('sentiuDor', student.sentiuDor),
-    mapValueToText('dorFrequente', student.dorFrequente),
-    mapValueToText('dorImpede', student.dorImpede),
-    student.escalaDor?.toString() || "0"
+    // modulo 6
+    mapValueToText('classificaSono', student.classificaSono),
+    mapValueToText('freqAcorda', student.freqAcorda),
+    mapValueToText('freqAnsiedadeSono', student.freqAnsiedadeSono),
   ];
 }
 

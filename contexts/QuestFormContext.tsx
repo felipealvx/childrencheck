@@ -2,35 +2,41 @@ import { createContext, ReactNode, useState, useEffect } from "react";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export type QuestProps = {
+  // modulo 1
   fullName: string;
   age: string;
   weight: number;
   height: number;
   parent: string;
-  pratica: 1 | 2;
-  qual?: string;
-  diasPratica: 1 | 2 | 3 | 4;
-  competitivo: 1 | 2;
-  horasTv: 1 | 2 | 3 | 4 | 5 | 6;
-  horasPc: 1 | 2 | 3 | 4 | 5;
-  ler: 1 | 2 | 3;
-  posicaoDormir: 1 | 2 | 3 | 4;
-  horasDorme: 1 | 2 | 3 | 4 | 5;
-  sexo: 1 | 2;
-  sentarEscreverMesa: 1 | 2 | 3 | 4 | 5 | 6;
-  sentarCadeiraConversar: 1 | 2 | 3 | 4 | 5 | 6;
-  sentarComputador: 1 | 2 | 3 | 4 | 5 | 6;
-  pegarObjeto: 1 | 2 | 3 | 4 | 5;
-  bolsas: 1 | 2 | 3 | 4 | 5 | 6;
-  levarMochila: 1 | 2 | 3 | 4 | 5 | 6;
-  responsavelFemEstudo: 1 | 2 | 3 | 4 | 5 | 6;
-  responsavelMascEstudo: 1 | 2 | 3 | 4 | 5 | 6;
-  responsavelDores: 1 | 2 | 3;
-  qualResponsavelDores?: string;
-  sentiuDor: 1 | 2 | 3;
-  dorFrequente: 1 | 2 | 3 | 4 | 5 | 6;
-  dorImpede: 1 | 2 | 3;
+  sexo: 1 | 2 | 3;
+
+  // modulo 2
+  posicaoComumCadeira: 1 | 2 | 3 | 4 | 5;
+  freqEncosto: 1 | 2 | 3 | 4 | 5;
+  apoioEscrevendoComputador: 1 | 2 | 3;
+  ajusteCadeiraMesa: 1 | 2 | 3 | 4 | 5;
+
+  // modulo 3
+  freqAnsiedade: 1 | 2 | 3 | 4 | 5;
+  reageProva: 1 | 2 | 3 | 4;
+  membrosTensao: 1 | 2 | 3 | 4 | 5;
+  estresseGeral: 1 | 2 | 3 | 4;
+
+  // modulo 4
+  dorGeral: 1 | 2;
   escalaDor: 1 | 2 | 3 | 4 | 5;
+  dorDuracao: 1 | 2 | 3;
+  dorPioraEstresse: 1 | 2 | 3 | 4;
+
+  //modulo 5
+  diasPraticaAtv: 1 | 2 | 3 | 4;
+  tempoAtvFimSemana: 1 | 2 | 3 | 4;
+  horasSentado: 1 | 2 | 3 | 4;
+
+  //modulo 6
+  classificaSono: 1 | 2 | 3 | 4 | 5;
+  freqAcorda: 1 | 2 | 3 | 4 | 5;
+  freqAnsiedadeSono: 1 | 2 | 3 | 4 | 5;
 };
 
 type QuestFormContextDataProps = {
@@ -59,31 +65,26 @@ const defaultQuestData: QuestProps = {
   weight: 0,
   height: 0,
   parent: "",
+  sexo: 0 as any,
 
   // Questionários com valores padrão 0
-  pratica: 0 as any,
-  qual: "",
-  diasPratica: 0 as any,
-  competitivo: 0 as any,
-  horasTv: 0 as any,
-  horasPc: 0 as any,
-  ler: 0 as any,
-  posicaoDormir: 0 as any,
-  horasDorme: 0 as any,
-  sexo: 0 as any,
-  sentarEscreverMesa: 0 as any,
-  sentarCadeiraConversar: 0 as any,
-  sentarComputador: 0 as any,
-  pegarObjeto: 0 as any,
-  bolsas: 0 as any,
-  levarMochila: 0 as any,
-  responsavelFemEstudo: 0 as any,
-  responsavelMascEstudo: 0 as any,
-  responsavelDores: 0 as any,
-  qualResponsavelDores: "",
-  sentiuDor: 0 as any,
-  dorFrequente: 0 as any,
-  dorImpede: 0 as any,
+  posicaoComumCadeira: 0 as any,
+  freqEncosto: 0 as any,
+  apoioEscrevendoComputador: 0 as any,
+  ajusteCadeiraMesa: 0 as any,
+  freqAnsiedade: 0 as any,
+  reageProva: 0 as any,
+  membrosTensao: 0 as any,
+  estresseGeral: 0 as any,
+  dorGeral: 0 as any,
+  dorDuracao: 0 as any,
+  dorPioraEstresse: 0 as any,
+  diasPraticaAtv: 0 as any,
+  tempoAtvFimSemana: 0 as any,
+  horasSentado: 0 as any,
+  classificaSono: 0 as any,
+  freqAcorda: 0 as any,
+  freqAnsiedadeSono: 0 as any,
   escalaDor: 0 as any,
 };
 

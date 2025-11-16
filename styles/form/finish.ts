@@ -109,16 +109,22 @@ export const styles = StyleSheet.create({
     color: Colors.danger
   },
   modalContent: {
+    position: 'relative',
     backgroundColor: 'white',
-    padding: 10,
+    paddingHorizontal: 16,
+    paddingTop: 40,
     borderRadius: 8,
-    width: '90%'
+    width: '90%',
+    minHeight: '40%',
+    maxHeight: '60%',
+    borderBottomWidth: 30,
+    borderColor: "white",
   },
   modalTitle: {
     textAlign: 'center',
     fontSize: 24,
     fontWeight: 'bold',
-    color: Colors.primary,
+    color: Colors.text,
   },
   noClassesContainer: {
     alignItems: 'center',
@@ -143,15 +149,19 @@ export const styles = StyleSheet.create({
     color: 'white'
   },
   modalCloseButtonContainer: {
+    position: 'absolute',
+    right: 0,
+    top: -10,
   },
   modalCloseButton: {
+    // backgroundColor: Colors.danger,
     marginTop: 10,
-    padding: 5,
+    padding: 16,
     borderRadius: 4,
   },
   modalCloseButtonText: {
     textAlign: 'center',
-
+    color: "white",
   },
   classOption: {
     backgroundColor: Colors.primary,
@@ -169,6 +179,6 @@ export const styles = StyleSheet.create({
   },
   classOptionInfo: {
     fontSize: 16,
-    color: Colors.deepBlue,
+    color: '#cad4e2ff',
   }
 })

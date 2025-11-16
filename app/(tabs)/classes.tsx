@@ -1,15 +1,16 @@
 import { Colors } from "@/constants/Colors";
 import { useClasses } from "@/hooks/useClasses";
-import { 
-  ScrollView, 
-  Text, 
-  View, 
-  TouchableOpacity, 
-  Alert, 
+import {
+  ScrollView,
+  Text,
+  View,
+  TouchableOpacity,
+  Alert,
   TextInput,
   Modal,
   FlatList,
-  ActivityIndicator
+  ActivityIndicator,
+  Image,
 } from "react-native";
 import { useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
@@ -17,7 +18,13 @@ import { styles } from "@/styles/classes/classes";
 import { exportClassToCSV } from "@/utils/csvExport";
 
 export default function Classes() {
-  const { classes, addNewClass, deleteClass, removeStudentFromClass, isLoading } = useClasses();
+  const {
+    classes,
+    addNewClass,
+    deleteClass,
+    removeStudentFromClass,
+    isLoading,
+  } = useClasses();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [newClassName, setNewClassName] = useState("");
   const [expandedClass, setExpandedClass] = useState<string | null>(null);
@@ -38,26 +45,30 @@ export default function Classes() {
       `Tem certeza que deseja excluir a turma "${className}"? Esta ação não pode ser desfeita.`,
       [
         { text: "Cancelar", style: "cancel" },
-        { 
-          text: "Excluir", 
+        {
+          text: "Excluir",
           style: "destructive",
-          onPress: () => deleteClass(classId)
-        }
+          onPress: () => deleteClass(classId),
+        },
       ]
     );
   };
 
-  const handleRemoveStudent = (classId: string, studentId: string, studentName: string) => {
+  const handleRemoveStudent = (
+    classId: string,
+    studentId: string,
+    studentName: string
+  ) => {
     Alert.alert(
       "Confirmar remoção",
       `Tem certeza que deseja remover "${studentName}" da turma?`,
       [
         { text: "Cancelar", style: "cancel" },
-        { 
-          text: "Remover", 
+        {
+          text: "Remover",
           style: "destructive",
-          onPress: () => removeStudentFromClass(classId, studentId)
-        }
+          onPress: () => removeStudentFromClass(classId, studentId),
+        },
       ]
     );
   };
@@ -71,15 +82,19 @@ export default function Classes() {
       <View style={styles.studentInfo}>
         <Text style={styles.studentName}>{student.fullName}</Text>
         <Text style={styles.studentDetails}>
-          Idade: {student.age} | Peso: {student.weight}kg | Altura: {student.height}cm
+          Idade: {student.age} | Peso: {student.weight}kg | Altura:{" "}
+          {student.height}cm
         </Text>
         <Text style={styles.studentDate}>
-          Adicionado em: {new Date(student.createdAt).toLocaleDateString('pt-BR')}
+          Adicionado em:{" "}
+          {new Date(student.createdAt).toLocaleDateString("pt-BR")}
         </Text>
       </View>
-      <TouchableOpacity 
+      <TouchableOpacity
         style={styles.removeButton}
-        onPress={() => handleRemoveStudent(classId, student.id, student.fullName)}
+        onPress={() =>
+          handleRemoveStudent(classId, student.id, student.fullName)
+        }
       >
         <Ionicons name="trash-outline" size={20} color={Colors.danger} />
       </TouchableOpacity>
@@ -100,7 +115,7 @@ export default function Classes() {
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.title}>Minhas Turmas</Text>
-        <TouchableOpacity 
+        <TouchableOpacity
           style={styles.addButton}
           onPress={() => setIsModalVisible(true)}
         >
@@ -111,7 +126,10 @@ export default function Classes() {
 
       {classes.length === 0 ? (
         <View style={styles.emptyState}>
-          <Ionicons name="school-outline" size={80} color="#ccc" />
+          <Image
+            style={styles.image}
+            source={require("../../assets/images/ilustrations/class.png")}
+          />
           <Text style={styles.emptyStateText}>Nenhuma turma criada ainda</Text>
           <Text style={styles.emptyStateSubtext}>
             Toque no botão "Nova Turma" para começar
@@ -123,7 +141,7 @@ export default function Classes() {
           keyExtractor={(item) => item.id}
           renderItem={({ item: classItem }) => (
             <View style={styles.classCard}>
-              <TouchableOpacity 
+              <TouchableOpacity
                 style={styles.classHeader}
                 onPress={() => toggleClassExpansion(classItem.id)}
               >
@@ -131,26 +149,40 @@ export default function Classes() {
                   <Text style={styles.className}>{classItem.name}</Text>
                   <Text style={styles.classInfo}>
                     {classItem.students.length} aluno(s) • Criada em{" "}
-                    {new Date(classItem.createdAt).toLocaleDateString('pt-BR')}
+                    {new Date(classItem.createdAt).toLocaleDateString("pt-BR")}
                   </Text>
                 </View>
                 <View style={styles.classHeaderRight}>
-                  <Ionicons 
-                    name={expandedClass === classItem.id ? "chevron-up" : "chevron-down"} 
-                    size={20} 
-                    color={Colors.primary} 
+                  <Ionicons
+                    name={
+                      expandedClass === classItem.id
+                        ? "chevron-up"
+                        : "chevron-down"
+                    }
+                    size={20}
+                    color={Colors.primary}
                   />
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.deleteClassButton}
-                    onPress={() => handleDeleteClass(classItem.id, classItem.name)}
+                    onPress={() =>
+                      handleDeleteClass(classItem.id, classItem.name)
+                    }
                   >
-                    <Ionicons name="trash-outline" size={18} color={Colors.danger} />
+                    <Ionicons
+                      name="trash-outline"
+                      size={18}
+                      color={Colors.danger}
+                    />
                   </TouchableOpacity>
-                  <TouchableOpacity 
+                  <TouchableOpacity
                     style={styles.deleteClassButton}
                     onPress={() => exportClassToCSV(classItem)}
                   >
-                    <Ionicons name="arrow-down-circle-outline" size={18} color={Colors.deepBlue} />
+                    <Ionicons
+                      name="arrow-down-circle-outline"
+                      size={18}
+                      color={Colors.deepBlue}
+                    />
                   </TouchableOpacity>
                 </View>
               </TouchableOpacity>
@@ -159,6 +191,10 @@ export default function Classes() {
                 <View style={styles.studentsSection}>
                   {classItem.students.length === 0 ? (
                     <View style={styles.noStudents}>
+                      <Image 
+                        style={styles.studentsImage}
+                        source={require("@/assets/images/ilustrations/students.png")}
+                      />
                       <Text style={styles.noStudentsText}>
                         Nenhum aluno nesta turma ainda
                       </Text>
@@ -171,7 +207,7 @@ export default function Classes() {
                       <Text style={styles.studentsTitle}>
                         Alunos ({classItem.students.length})
                       </Text>
-                      {classItem.students.map((student) => 
+                      {classItem.students.map((student) =>
                         renderStudent(student, classItem.id)
                       )}
                     </View>
@@ -193,7 +229,7 @@ export default function Classes() {
         <View style={styles.modalOverlay}>
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>Nova Turma</Text>
-            
+
             <TextInput
               style={styles.modalInput}
               placeholder="Nome da turma (ex: 9º Ano A)"
@@ -201,9 +237,9 @@ export default function Classes() {
               onChangeText={setNewClassName}
               autoFocus
             />
-            
+
             <View style={styles.modalButtons}>
-              <TouchableOpacity 
+              <TouchableOpacity
                 style={[styles.modalButton, styles.cancelButton]}
                 onPress={() => {
                   setIsModalVisible(false);
@@ -212,8 +248,8 @@ export default function Classes() {
               >
                 <Text style={styles.cancelButtonText}>Cancelar</Text>
               </TouchableOpacity>
-              
-              <TouchableOpacity 
+
+              <TouchableOpacity
                 style={[styles.modalButton, styles.confirmButton]}
                 onPress={handleAddClass}
               >

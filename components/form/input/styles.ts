@@ -19,6 +19,7 @@ export const styles = StyleSheet.create({
     padding: 16,
     marginTop: 5,
     fontSize: 16,
+    backgroundColor: "white"
   },
   errorMessage: {
     color: Colors.danger,
