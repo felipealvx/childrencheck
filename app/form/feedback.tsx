@@ -1,14 +1,7 @@
-import {
-  ScrollView,
-  Text,
-  View,
-  StyleSheet,
-  TouchableOpacity,
-} from "react-native";
+import { ScrollView, Text, View, StyleSheet } from "react-native";
 import { useQuestForm } from "@/hooks/useQuestForm";
 import { Ionicons } from "@expo/vector-icons";
 import { Colors } from "@/constants/Colors";
-import { router } from "expo-router";
 
 type FeedbackItem = {
   icon: keyof typeof Ionicons.glyphMap;
@@ -29,7 +22,7 @@ export default function Feedback() {
 
     if ([2, 3, 4, 5].includes(questFormData.posicaoComumCadeira)) {
       feedbacks.push({
-        icon: "body",
+        icon: "warning",
         color: Colors.medium,
         title: "Atenção à Sua Postura na Cadeira",
         description:
@@ -73,8 +66,165 @@ export default function Feedback() {
 
     // --------------------- MODULO 03
 
-    
+    if ([3, 4, 5].includes(questFormData.freqAnsiedade)) {
+      feedbacks.push({
+        icon: "heart-sharp",
+        color: Colors.hight,
+        title: "Atenção à Ansiedade",
+        description:
+          "Sinais frequentes de ansiedade podem aumentar a tensão muscular e afetar sua postura.",
+        priority: "high",
+      });
+    }
 
+    if ([3, 4].includes(questFormData.reageProva)) {
+      feedbacks.push({
+        icon: "leaf",
+        color: Colors.hight,
+        title: "Reações Intensificadas ao Estresse",
+        description:
+          "Seu corpo reage forte ao estresse, o que pode aumentar dores e tensão muscular.",
+        priority: "high",
+      });
+    }
+
+    if ([1, 2].includes(questFormData.membrosTensao)) {
+      feedbacks.push({
+        icon: "pulse",
+        color: Colors.hight,
+        title: "Tensão Muscular Elevada",
+        description:
+          "Você apresenta tensão frequente nos ombros ou mandíbula, sinal de estresse alto.",
+        priority: "high",
+      });
+    }
+
+    if ([3, 4].includes(questFormData.estresseGeral)) {
+      feedbacks.push({
+        icon: "sad",
+        color: Colors.hight,
+        title: "Estresse Elevado",
+        description:
+          "O estresse alto pode piorar dores e afetar sua postura no dia a dia.",
+        priority: "high",
+      });
+    }
+
+    // ---------------------- MODULO 04
+
+    if (questFormData.dorGeral === 1) {
+      feedbacks.push({
+        icon: "man",
+        color: Colors.hight,
+        title: "Você Sentiu Dor Recentemente",
+        description:
+          "A presença de dor indica que seus hábitos podem estar sobrecarregando seu corpo, procure um médico.",
+        priority: "high",
+      });
+    }
+
+    if ([4, 5].includes(questFormData.escalaDor)) {
+      feedbacks.push({
+        icon: "man",
+        color: Colors.hight,
+        title: "Dor Intensa",
+        description:
+          "Sua dor foi classificada como forte. Isso exige atenção e ajustes nos hábitos diários, procure um médico.",
+        priority: "high",
+      });
+    }
+
+    if (questFormData.dorDuracao === 1) {
+      feedbacks.push({
+        icon: "man",
+        color: Colors.hight,
+        title: "Dor Persistente",
+        description:
+          "A dor prolongada indica que ela pode ter se tornado crônica, exigindo cuidados, procure um médico",
+        priority: "high",
+      });
+    }
+
+    if (questFormData.dorPioraEstresse === 1) {
+      feedbacks.push({
+        icon: "man",
+        color: Colors.hight,
+        title: "Dor Relacionada ao Estresse",
+        description:
+          "Seu corpo sente mais dor quando você está estressado, o que piora a tensão muscular.",
+        priority: "high",
+      });
+    }
+
+    // ----------------------- MODULO 05
+
+    if ([1, 2].includes(questFormData.diasPraticaAtv)) {
+      feedbacks.push({
+        icon: "basketball",
+        color: Colors.medium,
+        title: "Pouca Atividade Física",
+        description:
+          "Você se movimenta pouco na semana, busque praticar algum exercício ou esporte.",
+        priority: "medium",
+      });
+    }
+
+    if ([1, 4].includes(questFormData.tempoAtvFimSemana)) {
+      feedbacks.push({
+        icon: "time",
+        color: Colors.blue,
+        title: "Pouco Movimento no Fim de Semana",
+        description:
+          "A falta de atividade física pode prejudicar seu corpo, busque praticar algum esporte ou atividade física",
+        priority: "low",
+      });
+    }
+
+    if ([3, 4].includes(questFormData.horasSentado)) {
+      feedbacks.push({
+        icon: "laptop-outline",
+        color: Colors.medium,
+        title: "Tempo Excessivo Sentado",
+        description:
+          "Muitas horas sentado aumentam a sobrecarga na coluna, busque se movimentar mais e fazer pausas",
+        priority: "medium",
+      });
+    }
+
+    // --------------------- MODULO 06
+
+    if ([3, 4, 5].includes(questFormData.classificaSono)) {
+      feedbacks.push({
+        icon: "cloudy-night",
+        color: Colors.hight,
+        title: "Sono de Baixa Qualidade",
+        description:
+          "Dormir mal aumenta o estresse e reduz a recuperação do corpo.",
+        priority: "high",
+      });
+    }
+
+    if ([3, 4, 5].includes(questFormData.freqAcorda)) {
+      feedbacks.push({
+        icon: "bed",
+        color: Colors.medium,
+        title: "Cansaço ao Acordar",
+        description:
+          "Acordar cansado ou com dor é um sinal de qualidade de sono ruim, tente dormir mais cedo e ficar longe de telas antes de deitar-se.",
+        priority: "medium",
+      });
+    }
+
+    if ([3, 4, 5].includes(questFormData.freqAnsiedadeSono)) {
+      feedbacks.push({
+        icon: "alarm",
+        color: Colors.medium,
+        title: "Ansiedade Prejudicando o Sono",
+        description:
+          "A ansiedade está interferindo no seu sono, o que piora ainda mais o estresse.",
+        priority: "medium",
+      });
+    }
 
     // Se não houver problemas graves
     if (
@@ -150,17 +300,15 @@ export default function Feedback() {
           💡 Dicas Gerais para Saúde Postural
         </Text>
         <Text style={styles.tipItem}>
-          • Mantenha as costas sempre retas ao sentar
+          Pratique exercícios físicos regularmente para manter uma rotina
+          saudável e fortalecer o seu corpo.
         </Text>
         <Text style={styles.tipItem}>
-          • Faça pausas e alongamentos regulares
-        </Text>
-        <Text style={styles.tipItem}>• Ajuste a altura da cadeira e mesa</Text>
-        <Text style={styles.tipItem}>
-          • Pratique exercícios para fortalecer as costas
+          Ajuste sempre a mesa ou cadeira para você ficar numa posição
+          confortável.
         </Text>
         <Text style={styles.tipItem}>
-          • Distribua bem o peso ao carregar mochilas
+          Não carregue peso excessivo na sua mochila.
         </Text>
       </View>
     </ScrollView>
@@ -175,7 +323,7 @@ const styles = StyleSheet.create({
   },
   header: {
     alignItems: "center",
-    marginBottom: 20,
+    marginBottom: 10,
     paddingVertical: 10,
   },
   title: {
@@ -184,8 +332,9 @@ const styles = StyleSheet.create({
     color: Colors.primary,
   },
   subtitle: {
-    fontSize: 16,
-    color: "#666",
+    fontSize: 24,
+    color: Colors.blue,
+    fontWeight: '300',
     marginTop: 4,
   },
   alertBox: {
@@ -209,6 +358,7 @@ const styles = StyleSheet.create({
   feedbackCard: {
     flexDirection: "row",
     backgroundColor: "white",
+    alignItems: "center",
     borderRadius: 12,
     padding: 16,
     elevation: 2,
@@ -248,16 +398,18 @@ const styles = StyleSheet.create({
     backgroundColor: "#ffffffff",
     padding: 16,
     borderRadius: 12,
-    marginBottom: 20,
+    marginBottom: 40,
+    borderWidth: 1,
+    borderColor: "#dededeff"
   },
   tipsTitle: {
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: "bold",
     color: Colors.text,
     marginBottom: 12,
   },
   tipItem: {
-    fontSize: 14,
+    fontSize: 16,
     color: "#555",
     marginBottom: 6,
     lineHeight: 20,

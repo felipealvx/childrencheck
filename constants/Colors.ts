@@ -10,8 +10,8 @@ export const Colors = {
 
   // priority
   hight: '#f04770',
-  medium: '#FF9800',
-  low: '#4CAF50',
-  purple: '#9C27B0',
-  blue: '#2196F3',
+  medium: '#ee9b00',
+  low: '#a7c957',
+  purple: '#be59d0ff',
+  blue: '#0a9396',
 };
